@@ -21,7 +21,7 @@ This interfaceboard is meant to be used in combination with the software [LinuxC
 Do not use this board for any time critical porpuses!
 
 ## Online Preview / BOM
-[Online BOM](https://htmlpreview.github.io/?https://raw.githubusercontent.com/PedPEx/Siemens-LinuxCNC-Interface/main/hardware/bom/webviewer-BOM.html)
+[Online BOM](https://htmlpreview.github.io/?https://raw.githubusercontent.com/PedPEx/Siemens-LinuxCNC-Interface/main/1_hardware/bom/webviewer-BOM.html)
 
 ---
 **Note**
