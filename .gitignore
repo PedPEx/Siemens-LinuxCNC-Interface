@@ -5,3 +5,5 @@
 *fp-info-cache
 production/backups*
 1_hardware/datasheets
+1_hardware/_autosave*
+2_firmware_STM32/Debug*
