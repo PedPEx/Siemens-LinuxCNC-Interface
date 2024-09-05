@@ -3,7 +3,7 @@ This interface board is designed to be placed on the backside of an [old type](h
 
 The [new generation](https://mall.industry.siemens.com/mall/de/WW/Catalog/Product/6FC5303-0AF22-1AA1) of these Siemens parts are already ProfiNet devices but look very similar the old ones with two 64pin PinHeaders.
 
-![v0.9.0](0_pictures/InterfaceBoard_Render.png "Blender render")
+![v0.9.0](0_pictures/InterfaceBoard_Render_v090.png "Blender render")
 
 ## Powering
 The board needs no seperate supply voltage and is fully powered by the USB Interface. A power distribution switch deactivates the whole interface in case of an overcurrent (set to 1.0 A).
