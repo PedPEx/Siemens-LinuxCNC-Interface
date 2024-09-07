@@ -10,6 +10,142 @@
 		(rev "v0.9.0")
 	)
 	(lib_symbols
+		(symbol "Device:C"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "easyeda2kicad:PCA9555PW,118"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -748,6 +884,12 @@
 		(uuid "08936780-60ed-43e6-b40c-25d655677565")
 	)
 	(junction
+		(at 124.46 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0c26e0d3-392b-42ab-9fcf-0c7d0d1c22f9")
+	)
+	(junction
 		(at 224.79 125.73)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -758,6 +900,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1bebdfdd-35c7-4c65-a4b3-bcf64e9265a8")
+	)
+	(junction
+		(at 72.39 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "203f3611-c153-4c2f-a1f0-03f6e6f136d7")
 	)
 	(junction
 		(at 38.1 101.6)
@@ -790,6 +938,18 @@
 		(uuid "38637406-d9ff-43f2-9ecc-12d7f3f648d8")
 	)
 	(junction
+		(at 60.96 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "40cd1c87-2e24-444a-9111-7dede652d318")
+	)
+	(junction
+		(at 147.32 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "44ed25b5-2af3-47a6-af49-a2faf9dfef7c")
+	)
+	(junction
 		(at 92.71 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -818,6 +978,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "487151ef-c7fa-480d-ae28-473535f130af")
+	)
+	(junction
+		(at 49.53 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "496e3e35-f69f-4c32-ae55-193bed64f20b")
 	)
 	(junction
 		(at 160.02 82.55)
@@ -886,6 +1052,24 @@
 		(uuid "763955d1-20c2-4498-b2e6-a737f0b4857d")
 	)
 	(junction
+		(at 60.96 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7b80dc7a-27c5-4eaa-b28c-81cbae276b7d")
+	)
+	(junction
+		(at 83.82 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7dd12989-e6ec-4555-8029-170d8dbf654d")
+	)
+	(junction
+		(at 113.03 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e76e973-641a-494a-83eb-cd9ca1060a13")
+	)
+	(junction
 		(at 157.48 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -916,6 +1100,12 @@
 		(uuid "9891f1a0-0b4c-4e7e-aa18-3de03242dbba")
 	)
 	(junction
+		(at 113.03 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9a933ae8-29a0-45eb-957a-5d0e7bcfada1")
+	)
+	(junction
 		(at 27.94 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -926,6 +1116,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9fe68a41-90b6-46c0-8600-e4cceb803d8b")
+	)
+	(junction
+		(at 135.89 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a845c99f-a9b0-41f1-9138-80fe4ab970c3")
 	)
 	(junction
 		(at 92.71 162.56)
@@ -952,6 +1148,24 @@
 		(uuid "c0f6b669-8213-445b-91c1-113518c10373")
 	)
 	(junction
+		(at 83.82 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c1cb5e66-fb50-49bb-97d0-49055c531372")
+	)
+	(junction
+		(at 49.53 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2a91b60-221d-4e8a-830a-7d3f2224008a")
+	)
+	(junction
+		(at 72.39 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c59f212c-b3ad-43a4-aed6-ef6237e96f81")
+	)
+	(junction
 		(at 27.94 162.56)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -970,10 +1184,22 @@
 		(uuid "cc6d3486-3d43-4649-83c1-0782f9ae6765")
 	)
 	(junction
+		(at 124.46 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d13fe7de-bb4a-4573-9d30-748590756c69")
+	)
+	(junction
 		(at 90.17 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d1ba5142-c672-4440-99d8-5fa677e8fdae")
+	)
+	(junction
+		(at 147.32 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d2b2cf46-29ea-4b19-a63f-069af55986f0")
 	)
 	(junction
 		(at 90.17 115.57)
@@ -1010,6 +1236,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f0f7514a-dc64-438e-9720-af33120d763e")
+	)
+	(junction
+		(at 135.89 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f2d76687-8fda-4d62-b0cb-792fc82cf874")
 	)
 	(junction
 		(at 157.48 97.79)
@@ -1064,6 +1296,16 @@
 	(no_connect
 		(at 265.43 130.81)
 		(uuid "ea872513-d099-45e3-92ec-dc9be4e06088")
+	)
+	(wire
+		(pts
+			(xy 72.39 175.26) (xy 72.39 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "005d381f-8d5c-4d0a-a9e0-6cc0e76eddf6")
 	)
 	(wire
 		(pts
@@ -1207,6 +1449,16 @@
 	)
 	(wire
 		(pts
+			(xy 72.39 175.26) (xy 83.82 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ebe69de-0269-48a5-8963-cadebce54464")
+	)
+	(wire
+		(pts
 			(xy 228.6 59.69) (xy 229.87 59.69)
 		)
 		(stroke
@@ -1267,6 +1519,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 175.26) (xy 158.75 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "175fe081-c273-43b2-92dd-7309ca45ebcd")
+	)
+	(wire
+		(pts
 			(xy 30.48 140.97) (xy 31.75 140.97)
 		)
 		(stroke
@@ -1287,6 +1549,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 185.42) (xy 95.25 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "190ee344-1cb8-45fd-aac5-69acd899114a")
+	)
+	(wire
+		(pts
 			(xy 229.87 82.55) (xy 227.33 82.55)
 		)
 		(stroke
@@ -1294,6 +1566,16 @@
 			(type default)
 		)
 		(uuid "191f79c0-9234-47da-8600-c5f76a87b4e7")
+	)
+	(wire
+		(pts
+			(xy 60.96 187.96) (xy 49.53 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1956242f-999e-4763-a659-86d5d7925de3")
 	)
 	(wire
 		(pts
@@ -1314,6 +1596,16 @@
 			(type default)
 		)
 		(uuid "1a7e0b5b-bbf7-41a4-89e0-84c7293f513a")
+	)
+	(wire
+		(pts
+			(xy 135.89 187.96) (xy 124.46 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ae59169-7d1d-48c8-92b8-3833b7b4e694")
 	)
 	(wire
 		(pts
@@ -1384,6 +1676,16 @@
 			(type default)
 		)
 		(uuid "22828869-02e5-4441-9752-5eff4e7f226b")
+	)
+	(wire
+		(pts
+			(xy 60.96 175.26) (xy 72.39 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23a1321e-1dd1-4695-bce3-02af1cc30eeb")
 	)
 	(wire
 		(pts
@@ -1524,6 +1826,16 @@
 			(type default)
 		)
 		(uuid "31b3736f-0de7-44fd-8ebc-bc37a1c36787")
+	)
+	(wire
+		(pts
+			(xy 83.82 185.42) (xy 83.82 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31b60ebe-4215-4fe3-ab19-bdd5d73a6f83")
 	)
 	(wire
 		(pts
@@ -1837,6 +2149,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 175.26) (xy 95.25 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48744cf9-d36f-4022-af20-ef01c7ec3f93")
+	)
+	(wire
+		(pts
 			(xy 267.97 97.79) (xy 267.97 95.25)
 		)
 		(stroke
@@ -1864,6 +2186,16 @@
 			(type default)
 		)
 		(uuid "499d3521-91f9-4ab7-83dd-096222ec140f")
+	)
+	(wire
+		(pts
+			(xy 124.46 185.42) (xy 124.46 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49cc2400-e76c-4bfd-889d-3500538ef281")
 	)
 	(wire
 		(pts
@@ -1907,6 +2239,16 @@
 	)
 	(wire
 		(pts
+			(xy 60.96 177.8) (xy 60.96 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c7e456f-7bef-4700-992f-1d8e57b66c6e")
+	)
+	(wire
+		(pts
 			(xy 266.7 46.99) (xy 265.43 46.99)
 		)
 		(stroke
@@ -1937,6 +2279,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 185.42) (xy 135.89 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f61667a-60f1-4d9b-a686-080b2bb0497d")
+	)
+	(wire
+		(pts
 			(xy 27.94 82.55) (xy 27.94 86.36)
 		)
 		(stroke
@@ -1944,6 +2296,16 @@
 			(type default)
 		)
 		(uuid "50eeded0-2aac-4d6a-a3d0-2ac692e04a49")
+	)
+	(wire
+		(pts
+			(xy 83.82 175.26) (xy 83.82 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5255ff11-3012-4195-9b46-3973c27b2a36")
 	)
 	(wire
 		(pts
@@ -2004,6 +2366,16 @@
 			(type default)
 		)
 		(uuid "550ecc8c-4916-4e96-88ca-c713caa3f9ee")
+	)
+	(wire
+		(pts
+			(xy 113.03 172.72) (xy 113.03 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56ea7cf1-8c08-4536-93e0-8b90648fe110")
 	)
 	(wire
 		(pts
@@ -2077,6 +2449,16 @@
 	)
 	(wire
 		(pts
+			(xy 49.53 187.96) (xy 49.53 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c87be28-c721-44e9-9457-b8cbf6143f35")
+	)
+	(wire
+		(pts
 			(xy 132.08 57.15) (xy 130.81 57.15)
 		)
 		(stroke
@@ -2094,6 +2476,16 @@
 			(type default)
 		)
 		(uuid "5cc779a2-16ac-4d0b-a69b-9e30f240af46")
+	)
+	(wire
+		(pts
+			(xy 113.03 185.42) (xy 113.03 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d768b98-9ced-48f2-9f1e-e7f7c518533f")
 	)
 	(wire
 		(pts
@@ -2164,6 +2556,16 @@
 			(type default)
 		)
 		(uuid "6291ba4e-233e-40d4-bfdf-7dddca25eb7e")
+	)
+	(wire
+		(pts
+			(xy 158.75 175.26) (xy 158.75 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6409a182-f8fa-4c7f-9c5b-24b5140e6222")
 	)
 	(wire
 		(pts
@@ -2437,6 +2839,16 @@
 	)
 	(wire
 		(pts
+			(xy 49.53 185.42) (xy 49.53 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7be02e82-f5eb-42ac-b78e-aedba24325c6")
+	)
+	(wire
+		(pts
 			(xy 199.39 57.15) (xy 198.12 57.15)
 		)
 		(stroke
@@ -2557,6 +2969,16 @@
 	)
 	(wire
 		(pts
+			(xy 72.39 185.42) (xy 72.39 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8590d64f-d25c-492f-82c9-399ef3f432e3")
+	)
+	(wire
+		(pts
 			(xy 160.02 120.65) (xy 160.02 101.6)
 		)
 		(stroke
@@ -2584,6 +3006,16 @@
 			(type default)
 		)
 		(uuid "87fe7117-ddc3-4d81-8998-19fccc4f1441")
+	)
+	(wire
+		(pts
+			(xy 49.53 175.26) (xy 60.96 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8990f1e0-6d50-4ca9-a91e-671c314b078c")
 	)
 	(wire
 		(pts
@@ -2637,6 +3069,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 187.96) (xy 72.39 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c6a7284-0130-4fe6-9e3f-afc72bd5aa13")
+	)
+	(wire
+		(pts
 			(xy 199.39 49.53) (xy 198.12 49.53)
 		)
 		(stroke
@@ -2664,6 +3106,16 @@
 			(type default)
 		)
 		(uuid "8e212505-aa89-418b-91f9-f88a4a457024")
+	)
+	(wire
+		(pts
+			(xy 49.53 175.26) (xy 49.53 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ed67b0f-7e0c-415f-b507-15cff5796c24")
 	)
 	(wire
 		(pts
@@ -2717,6 +3169,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 175.26) (xy 135.89 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94a8fe03-dbc6-499e-8b4f-fe2ca2457fd8")
+	)
+	(wire
+		(pts
 			(xy 27.94 130.81) (xy 27.94 158.75)
 		)
 		(stroke
@@ -2724,6 +3186,16 @@
 			(type default)
 		)
 		(uuid "97774c60-8fea-4bf2-b909-6fc307791fdd")
+	)
+	(wire
+		(pts
+			(xy 135.89 175.26) (xy 135.89 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "978e996f-cecd-4c23-aa34-4109bcedf91c")
 	)
 	(wire
 		(pts
@@ -2754,6 +3226,16 @@
 			(type default)
 		)
 		(uuid "99d3aacb-4241-470c-80ac-756e62e35d3d")
+	)
+	(wire
+		(pts
+			(xy 147.32 175.26) (xy 147.32 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b28a2f3-2bb9-4dd6-a1e0-6b9288f96f84")
 	)
 	(wire
 		(pts
@@ -2877,6 +3359,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 177.8) (xy 124.46 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a51a1ee3-55cc-4142-a614-ae1889312b1e")
+	)
+	(wire
+		(pts
 			(xy 132.08 46.99) (xy 130.81 46.99)
 		)
 		(stroke
@@ -2947,6 +3439,16 @@
 	)
 	(wire
 		(pts
+			(xy 158.75 185.42) (xy 158.75 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab961274-1627-45a9-a88e-3c67babf0c8a")
+	)
+	(wire
+		(pts
 			(xy 19.05 86.36) (xy 19.05 88.9)
 		)
 		(stroke
@@ -2974,6 +3476,16 @@
 			(type default)
 		)
 		(uuid "abaf4821-5b93-481d-986b-3311f27cd0d9")
+	)
+	(wire
+		(pts
+			(xy 72.39 187.96) (xy 60.96 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac5a7f6a-9bbf-4351-ad44-fd835adb9763")
 	)
 	(wire
 		(pts
@@ -3047,6 +3559,26 @@
 	)
 	(wire
 		(pts
+			(xy 113.03 187.96) (xy 113.03 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4c389e3-7ec1-4c28-99ff-951a9f1abf7d")
+	)
+	(wire
+		(pts
+			(xy 158.75 187.96) (xy 147.32 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4f1ce34-b59d-42a2-893f-eb29268a20cc")
+	)
+	(wire
+		(pts
 			(xy 162.56 128.27) (xy 160.02 128.27)
 		)
 		(stroke
@@ -3064,6 +3596,16 @@
 			(type default)
 		)
 		(uuid "b604048c-5e43-400e-99b2-8353483ac532")
+	)
+	(wire
+		(pts
+			(xy 113.03 175.26) (xy 113.03 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8c5617c-cba8-4089-a38e-516655f49a92")
 	)
 	(wire
 		(pts
@@ -3167,6 +3709,16 @@
 	)
 	(wire
 		(pts
+			(xy 135.89 175.26) (xy 147.32 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be091e4e-4419-4cbf-ac33-a7d14fbda376")
+	)
+	(wire
+		(pts
 			(xy 267.97 105.41) (xy 267.97 115.57)
 		)
 		(stroke
@@ -3207,6 +3759,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 185.42) (xy 147.32 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3fd4c42-87cb-414d-babd-fc181bc3a9c5")
+	)
+	(wire
+		(pts
 			(xy 95.25 49.53) (xy 92.71 49.53)
 		)
 		(stroke
@@ -3234,6 +3796,16 @@
 			(type default)
 		)
 		(uuid "c5637ae1-aad7-47ca-aefc-85bc990605e4")
+	)
+	(wire
+		(pts
+			(xy 124.46 187.96) (xy 113.03 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5bea680-4f60-4e97-ad1d-04b6ee7f7811")
 	)
 	(wire
 		(pts
@@ -3284,6 +3856,16 @@
 			(type default)
 		)
 		(uuid "cd179d55-99a2-4670-bbb3-ad25adfc9501")
+	)
+	(wire
+		(pts
+			(xy 49.53 172.72) (xy 49.53 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cdb562e0-0224-4ff2-93af-41d67b504936")
 	)
 	(wire
 		(pts
@@ -3457,6 +4039,16 @@
 	)
 	(wire
 		(pts
+			(xy 113.03 175.26) (xy 124.46 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e33d8be3-77d8-4189-8002-151bd707da80")
+	)
+	(wire
+		(pts
 			(xy 133.35 41.91) (xy 130.81 41.91)
 		)
 		(stroke
@@ -3627,6 +4219,16 @@
 	)
 	(wire
 		(pts
+			(xy 60.96 185.42) (xy 60.96 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "efa0ede8-5959-4fa9-b4ee-4ab205a824a5")
+	)
+	(wire
+		(pts
 			(xy 224.79 125.73) (xy 224.79 115.57)
 		)
 		(stroke
@@ -3707,6 +4309,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 175.26) (xy 95.25 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f63e359f-6300-4dd1-8532-942b1d1a3f39")
+	)
+	(wire
+		(pts
 			(xy 200.66 29.21) (xy 267.97 29.21)
 		)
 		(stroke
@@ -3714,6 +4326,16 @@
 			(type default)
 		)
 		(uuid "f73ca028-3f7c-4e82-a81f-4e45132b2c51")
+	)
+	(wire
+		(pts
+			(xy 95.25 187.96) (xy 83.82 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f83fbfaf-0b1e-43a3-a21c-4962fe580852")
 	)
 	(wire
 		(pts
@@ -3744,6 +4366,16 @@
 			(type default)
 		)
 		(uuid "fbac29c1-2ac7-4ac7-9f8d-d55c5aede5ed")
+	)
+	(wire
+		(pts
+			(xy 147.32 187.96) (xy 135.89 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc103393-62a2-4c19-b975-b6bcbc96fc6d")
 	)
 	(wire
 		(pts
@@ -3849,7 +4481,7 @@
 	)
 	(global_label "Button-E02"
 		(shape input)
-		(at 161.29 146.05 180)
+		(at 161.29 143.51 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3859,7 +4491,7 @@
 		)
 		(uuid "01438f81-65e1-43b2-87bc-c8c7e1e03c18")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.996 146.05 0)
+			(at 146.996 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5059,7 +5691,7 @@
 	)
 	(global_label "ENC1-X15"
 		(shape input)
-		(at 161.29 143.51 180)
+		(at 161.29 146.05 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5069,7 +5701,7 @@
 		)
 		(uuid "80b97b3a-b6af-47d1-80a4-43e3ff84f187")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 148.1449 143.51 0)
+			(at 148.1449 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6806,6 +7438,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 49.53 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1f4d4fb5-76ca-4882-b3a8-4fdd658925bb")
+		(property "Reference" "#PWR062"
+			(at 49.53 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 49.53 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 49.53 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 49.53 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 49.53 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5d79b74e-dd65-4ac4-bd57-59919320114a")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "#PWR062")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "easyeda2kicad:PCA9555PW,118")
 		(at 49.53 137.16 0)
 		(unit 1)
@@ -7299,6 +7997,277 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 113.03 172.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "567642d2-fe2e-4333-b7b4-ff86cca54095")
+		(property "Reference" "#PWR064"
+			(at 113.03 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 113.03 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 113.03 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 113.03 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "88d2a023-881b-4a8c-a032-9d30ffb79773")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "#PWR064")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 113.03 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5db1335c-081b-41e2-96e7-efa642ca6fde")
+		(property "Reference" "C19"
+			(at 116.84 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4u7"
+			(at 116.84 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 112.0648 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 113.03 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "108c6b7f-bca7-45a9-9717-671827bcb1ab")
+		)
+		(pin "2"
+			(uuid "2b9d1283-5393-48cd-8c07-5af8364359a5")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 83.82 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6262e131-78a9-4dc9-b673-a74bc9058eb7")
+		(property "Reference" "C22"
+			(at 87.63 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 87.63 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 82.8548 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 83.82 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0e17de0c-2c43-4d9e-8c29-62ef15051427")
+		)
+		(pin "2"
+			(uuid "01b2b267-a2d0-4b46-a30f-fac411224c1e")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 113.03 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "671e0945-c243-4cb0-803b-d30da9d934f6")
+		(property "Reference" "#PWR065"
+			(at 113.03 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 113.03 194.564 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 113.03 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 113.03 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25a08ecd-ae91-4b5f-b173-e338ef3a26b2")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 19.05 88.9 0)
 		(unit 1)
@@ -7358,6 +8327,76 @@
 			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
 				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
 					(reference "#PWR058")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 158.75 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7e98fb52-47d2-41c5-889c-f9d780849044")
+		(property "Reference" "C27"
+			(at 162.56 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 162.56 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 157.7848 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 158.75 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 158.75 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "28dae8c9-77b8-448e-9658-a32f594a8564")
+		)
+		(pin "2"
+			(uuid "51d002fc-53d6-49a6-a61b-c31c9ae6859b")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C27")
 					(unit 1)
 				)
 			)
@@ -7424,6 +8463,76 @@
 			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
 				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
 					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 95.25 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9011050c-182d-4367-973e-f64cf470e95d")
+		(property "Reference" "C23"
+			(at 99.06 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 99.06 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 94.2848 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 95.25 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 95.25 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "887bd3a4-025e-45b6-a638-51e2052b5640")
+		)
+		(pin "2"
+			(uuid "7061f460-346a-4669-b7ab-a1d3d989b2d3")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C23")
 					(unit 1)
 				)
 			)
@@ -7573,6 +8682,216 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 135.89 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a658e54e-50b6-43dc-ac22-3bf3b900408f")
+		(property "Reference" "C25"
+			(at 139.7 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 139.7 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 134.9248 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 135.89 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 135.89 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "46fa32a2-7006-480e-94fd-3a7d46cbb0f3")
+		)
+		(pin "2"
+			(uuid "4c32f52a-487f-4e51-b843-95596bda9e72")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 147.32 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a8319684-f850-4f13-89c8-a9414681e7bf")
+		(property "Reference" "C26"
+			(at 151.13 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 151.13 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 146.3548 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 147.32 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 147.32 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26f208ef-e56a-4f9f-bdfc-836bfb0ab598")
+		)
+		(pin "2"
+			(uuid "b36c168f-14b1-4a20-8704-210f514349e1")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 60.96 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b6e48a54-8350-4968-b277-a3889d491e84")
+		(property "Reference" "C20"
+			(at 64.77 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 64.77 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 59.9948 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 60.96 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 60.96 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7fc1ce2b-4f1d-48a0-bea7-af80c45ae50c")
+		)
+		(pin "2"
+			(uuid "c5de18ec-bdb9-433e-8b4c-c68db97362b2")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "easyeda2kicad:PCA9555PW,118")
 		(at 247.65 60.96 0)
 		(unit 1)
@@ -7710,6 +9029,76 @@
 			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
 				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
 					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 124.46 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c02be882-a1db-4cf1-9fe2-f767af486458")
+		(property "Reference" "C24"
+			(at 128.27 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 128.27 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 123.4948 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 124.46 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 124.46 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1f767c93-5fb0-4726-84b4-6b0a845af391")
+		)
+		(pin "2"
+			(uuid "2f7ae736-bcc2-452d-a021-dbf630730469")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C24")
 					(unit 1)
 				)
 			)
@@ -7918,6 +9307,211 @@
 			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
 				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
 					(reference "U10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 49.53 190.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ecaeda0d-9858-4852-8493-deae1f31b00b")
+		(property "Reference" "#PWR063"
+			(at 49.53 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 49.53 194.564 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 49.53 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 49.53 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 49.53 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "18c10b35-85da-4f4a-8b50-79886100ed19")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "#PWR063")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 49.53 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2ec2933-1cc8-40be-84f9-60cb68c70844")
+		(property "Reference" "C18"
+			(at 53.34 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4u7"
+			(at 53.34 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 48.5648 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 49.53 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 49.53 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aed80e6a-7650-431b-a78a-7e5691db3b6c")
+		)
+		(pin "2"
+			(uuid "8560801b-0b8b-4049-9b5c-c27c9917ae30")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 72.39 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f2fb936d-c7e9-497f-9bac-70d63219949e")
+		(property "Reference" "C21"
+			(at 76.2 180.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 76.2 182.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 71.4248 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e7b3afcc-95e2-4460-9b7c-2984dc71422d")
+		)
+		(pin "2"
+			(uuid "9098ad49-f555-4221-818e-7b67deecc037")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/278ce87c-0565-49da-ba29-303fa3ce8185"
+					(reference "C21")
 					(unit 1)
 				)
 			)

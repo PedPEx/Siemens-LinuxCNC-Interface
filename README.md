@@ -17,7 +17,7 @@ Most of the IO on the three terminal blocks is directly wired into the microcont
 As terminal blocks [Weidmüller 1824460000 - LSF-SMT 3.50/06/90 3.5SN BK TU](https://catalog.weidmueller.com/catalog/Start.do?ObjectID=1824460000) were used - because i had them at hand. But any headers or screw terminals with a 3.5 mm pitch can be used here.
 
 ## Usage/Software
-This interfaceboard is meant to be used in combination with the software [LinuxCNC_ArduinoConnector](https://github.com/AlexmagToast/LinuxCNC_ArduinoConnector). This board does not operate with a Arduino, but with a much more capable [STM32F103C8](https://www.st.com/en/microcontrollers-microprocessors/stm32f103c8.html). The STM32 just emulates a serial port and sends the same signals to the LinuxCNC component like the Arduino would.
+This interfaceboard is meant to be used in combination with the software [LinuxCNC_ArduinoConnector](https://github.com/AlexmagToast/LinuxCNC_ArduinoConnector). This board does not operate with a Arduino, but with a much more capable [STM32L151C8](https://www.st.com/en/microcontrollers-microprocessors/stm32l151c8.html). The STM32 just emulates a serial port and sends the same signals to the LinuxCNC component like the Arduino would.
 
 ## Limitations
 Do not use this board for any time critical porpuses!

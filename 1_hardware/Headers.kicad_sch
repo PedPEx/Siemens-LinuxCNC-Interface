@@ -10662,7 +10662,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 95.25 0)
 			(effects
 				(font
@@ -10679,7 +10679,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 118.11 0)
 			(effects
 				(font
@@ -10697,7 +10697,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 120.65 0)
 			(effects
 				(font
@@ -10927,7 +10927,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 115.824 0)
 			(effects
 				(font
@@ -10944,7 +10944,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 138.43 0)
 			(effects
 				(font
@@ -10962,7 +10962,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 140.97 0)
 			(effects
 				(font
@@ -11022,7 +11022,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 136.144 0)
 			(effects
 				(font
@@ -11039,7 +11039,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 158.75 0)
 			(effects
 				(font
@@ -11057,7 +11057,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 161.29 0)
 			(effects
 				(font
@@ -11117,7 +11117,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 115.57 0)
 			(effects
 				(font
@@ -11134,7 +11134,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 138.43 0)
 			(effects
 				(font
@@ -11152,7 +11152,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 140.97 0)
 			(effects
 				(font
@@ -11382,7 +11382,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 95.504 0)
 			(effects
 				(font
@@ -11399,7 +11399,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 118.11 0)
 			(effects
 				(font
@@ -11417,7 +11417,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 120.65 0)
 			(effects
 				(font
@@ -11542,7 +11542,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 60.706 0)
 			(effects
 				(font
@@ -11559,7 +11559,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 82.55 0)
 			(effects
 				(font
@@ -11577,7 +11577,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 85.09 0)
 			(effects
 				(font
@@ -11703,7 +11703,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 135.89 0)
 			(effects
 				(font
@@ -11720,7 +11720,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 158.75 0)
 			(effects
 				(font
@@ -11738,7 +11738,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 161.29 0)
 			(effects
 				(font
@@ -12413,7 +12413,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 19.304 0)
 			(effects
 				(font
@@ -12430,7 +12430,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 41.91 0)
 			(effects
 				(font
@@ -12448,7 +12448,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 44.45 0)
 			(effects
 				(font
@@ -12508,7 +12508,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 19.05 0)
 			(effects
 				(font
@@ -12525,7 +12525,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 41.91 0)
 			(effects
 				(font
@@ -12543,7 +12543,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 44.45 0)
 			(effects
 				(font
@@ -12603,7 +12603,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 39.37 0)
 			(effects
 				(font
@@ -12620,7 +12620,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 62.23 0)
 			(effects
 				(font
@@ -12638,7 +12638,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 64.77 0)
 			(effects
 				(font
@@ -13116,7 +13116,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 250.19 40.132 0)
 			(effects
 				(font
@@ -13133,7 +13133,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 250.19 62.23 0)
 			(effects
 				(font
@@ -13151,7 +13151,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 250.19 64.77 0)
 			(effects
 				(font
@@ -13211,7 +13211,7 @@
 				)
 			)
 		)
-		(property "Value" "4x680R"
+		(property "Value" "4x470R"
 			(at 208.28 59.69 0)
 			(effects
 				(font
@@ -13228,7 +13228,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/Resistor-Networks-Arrays_680R-681-5_C12035.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Resistor-Networks-Arrays_UNI-ROYAL-Uniroyal-Elec-4D03WGJ0471T5E_C25510.html"
 			(at 208.28 82.55 0)
 			(effects
 				(font
@@ -13246,7 +13246,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C12035"
+		(property "LCSC Part" "C25510"
 			(at 208.28 85.09 0)
 			(effects
 				(font
