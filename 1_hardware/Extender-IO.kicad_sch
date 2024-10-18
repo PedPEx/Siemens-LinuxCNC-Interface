@@ -7,7 +7,7 @@
 	(title_block
 		(title "Inputs/Outputs Extenders")
 		(date "2024-10-18")
-		(rev "v0.9.2")
+		(rev "v0.9.3")
 	)
 	(lib_symbols
 		(symbol "Device:C"
