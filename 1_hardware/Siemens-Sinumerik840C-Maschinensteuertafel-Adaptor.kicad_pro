@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 3.0
+          "min_clearance": 0.5
         }
       },
       "diff_pair_dimensions": [
@@ -630,7 +630,11 @@
       "Root"
     ],
     [
-      "278ce87c-0565-49da-ba29-303fa3ce8185",
+      "2cfe2c7e-83df-45dd-b60e-672a1c018e21",
+      "Microcontroller"
+    ],
+    [
+      "b456ad37-6834-41ec-9eb8-a3f92a227dda",
       "IO Expander"
     ],
     [
