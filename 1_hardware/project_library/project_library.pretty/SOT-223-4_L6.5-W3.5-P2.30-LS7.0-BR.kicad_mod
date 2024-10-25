@@ -1,0 +1,188 @@
+(footprint "SOT-223-4_L6.5-W3.5-P2.30-LS7.0-BR"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 4.318 180)
+		(layer "F.SilkS")
+		(uuid "7beb15c0-ccaa-46ec-a5e3-40446002e8c4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "LD1117S33CTR"
+		(at 0 6.3 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5a5e1d14-18bd-4524-b144-b1790f6b0338")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "easyeda2kicad:SOT-223-4_L6.5-W3.5-P2.30-LS7.0-BR"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5516205d-196b-4fc7-ad0d-483e12c80640")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://lcsc.com/product-detail/Low-Dropout-Regulators-LDO_STMicroelectronics_LD1117S33CTR_LD1117S33CTR_C35879.html"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "916fc092-1591-4a2e-8d3c-4c5f81c0d23a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2cc4b61f-abcb-4b13-8af0-1f36917d8dd1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC Part" "C35879"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3025818a-9794-4e10-b660-88bb755572cb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.37 -3.33)
+		(end 1.37 -3.33)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2f0c39f4-8cef-4613-a0f2-ad95b4324ae9")
+	)
+	(fp_line
+		(start -1.37 3.33)
+		(end -1.37 -3.33)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5e1e1630-7771-45b4-81a4-439f8986d422")
+	)
+	(fp_line
+		(start 1.37 -3.33)
+		(end 1.37 3.33)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0a6b1b49-4a16-42f7-9a63-b6172f9b0eb0")
+	)
+	(fp_line
+		(start 1.37 3.33)
+		(end -1.37 3.33)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "19c4fa08-35ac-4066-8c55-2effc04142ba")
+	)
+	(fp_circle
+		(center 3.56 2.41)
+		(end 3.81 2.41)
+		(stroke
+			(width 0.5)
+			(type solid)
+		)
+		(fill none)
+		(layer "Cmts.User")
+		(uuid "e9a24182-c594-4022-abf0-b87da6a7b04e")
+	)
+	(fp_circle
+		(center 3.5 3.25)
+		(end 3.53 3.25)
+		(stroke
+			(width 0.06)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "cd076fae-ae9e-4858-b9dc-ea0ac7043a0d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2a6d1b8f-601f-4b06-8011-af73ef9e98ab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 2.83 2.3)
+		(size 2.47 0.98)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "eefcb3f7-f086-4fea-8221-bf729cc4011f")
+	)
+	(pad "2" smd rect
+		(at 2.83 0)
+		(size 2.47 0.98)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "b975a906-aaf7-4ca1-bcca-71971df7e513")
+	)
+	(pad "3" smd rect
+		(at 2.83 -2.3)
+		(size 2.47 0.98)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "328b298f-fa29-48c4-8a12-e07ef681e788")
+	)
+	(pad "4" smd rect
+		(at -2.83 0)
+		(size 2.47 3.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "67bc114d-3d8e-449f-82c6-cfbd91861166")
+	)
+	(model "${KIPRJMOD}/project_library/project_library_3D/SOT-223-4P_L6.5-W3.5-H1.6-LS7.0-P2.30.wrl"
+		(offset
+			(xyz 0 0 -0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 180)
+		)
+	)
+)

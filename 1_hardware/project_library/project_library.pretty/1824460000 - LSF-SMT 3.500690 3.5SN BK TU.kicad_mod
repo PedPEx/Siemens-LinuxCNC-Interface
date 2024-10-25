@@ -1,0 +1,398 @@
+(footprint "1824460000 - LSF-SMT 3.500690 3.5SN BK TU"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "1824460000")
+	(tags "Connector")
+	(property "Reference" "REF**"
+		(at 8.75 -10.048 0)
+		(layer "F.SilkS")
+		(uuid "03075df2-4252-422b-9c05-b3a2503f210b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "Power"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "832316ce-bd98-45ff-9c3e-bb25e065a788")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" "CostumLibrary:1824460000 - LSF-SMT 3.500690 3.5SN BK TU"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "152edb65-478b-4b04-892b-2e9abe3ff59a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "http://catalog.weidmueller.com/createDatasheetForMobile.do?ordernumber=1824460000&scope1=1&scope2=1&localeId=en"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "587ea121-29af-4d2b-aa5f-6dcb43785b4a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Printed circuit board terminals, 3.50 mm, Number of poles: 6, 90, Solder pin length: 3.5 mm, black, PUSH IN with actuator, Clamping range, max. [rated connection]: 1.5 mm, Tube"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b131b13f-5064-4f70-a6d1-d0641eeb02e3")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "8.5"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "95f803b6-e971-4bbd-a128-a47104415101")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "Weidmuller"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "351009af-a84e-47ae-914e-4f266396d081")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "1824460000"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "67b82fe2-1537-458f-abe4-8dead0096f57")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "470-1824460000"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "339051af-a6c6-4cdd-8c1a-e70c27f900c9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Weidmuller/1824460000?qs=WJDKaGZ8K%252B6qGfZkM4Ritg%3D%3D"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "06234535-f20e-4c2d-842f-c96e0081898e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Part Number" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a433ae1b-285b-4c21-be56-50697026d68b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Price/Stock" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f85af8aa-7071-4a26-8d7a-26f2c858d49a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.1 -8.7)
+		(end -2.1 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b3282c1f-2694-4c08-a003-dfe2aa1e2359")
+	)
+	(fp_line
+		(start 0 5.3)
+		(end 19.6 5.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2f104735-2022-453e-91fd-3a72a706a617")
+	)
+	(fp_line
+		(start 19.6 -8.7)
+		(end -2.1 -8.7)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "21c15e7f-7a1b-4eb1-9c89-c4172c24bf23")
+	)
+	(fp_line
+		(start 19.6 5.3)
+		(end 19.6 -8.7)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4a4bbb14-8116-47b7-a4a9-07a9a1529fff")
+	)
+	(fp_line
+		(start -2.35 -8.95)
+		(end 19.85 -8.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "1ca23581-4d0d-40a9-a7ec-046cfefc6b1b")
+	)
+	(fp_line
+		(start -2.35 5.55)
+		(end -2.35 -8.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bf68aecd-c08c-4079-b23f-6f513641ba92")
+	)
+	(fp_line
+		(start 19.85 -8.95)
+		(end 19.85 5.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7ca55b89-eb9b-480d-a73f-f8c86dcc1ddb")
+	)
+	(fp_line
+		(start 19.85 5.55)
+		(end -2.35 5.55)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "dfa6f558-800d-4fb0-bdca-9da3a2f0b46b")
+	)
+	(fp_line
+		(start -2.1 -8.7)
+		(end 19.6 -8.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d5c17122-980b-4dd8-9353-b962b0c428dc")
+	)
+	(fp_line
+		(start -2.1 5.3)
+		(end -2.1 -8.7)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ab6eacde-16d2-4107-8e26-5f7c8488c220")
+	)
+	(fp_line
+		(start 19.6 -8.7)
+		(end 19.6 5.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dadd693f-76a9-4518-8557-9905166d4ec9")
+	)
+	(fp_line
+		(start 19.6 5.3)
+		(end -2.1 5.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "47467527-536b-4723-b00f-10f92d8a1161")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0e4c8949-e166-4b1a-a9aa-8d3e1e5e0d65")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1937feca-32db-4c2f-942d-fee385ed10ff")
+	)
+	(pad "2" thru_hole circle
+		(at 0 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "51e99df9-1aac-46c0-8fe9-94cfb5689e7c")
+	)
+	(pad "3" thru_hole circle
+		(at 3.5 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f1b92ce0-505b-4b42-817c-ac5a83c2ae99")
+	)
+	(pad "4" thru_hole circle
+		(at 3.5 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "569c0a9c-7b6b-4a1d-a851-ad286cdb7b7b")
+	)
+	(pad "5" thru_hole circle
+		(at 7 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3886329e-5b26-49be-b86c-70121aa49dc1")
+	)
+	(pad "6" thru_hole circle
+		(at 7 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "931dfc09-88cc-4b18-9e9e-d7a16e45f716")
+	)
+	(pad "7" thru_hole circle
+		(at 10.5 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d22a3861-aec4-4d52-a379-79555d15f395")
+	)
+	(pad "8" thru_hole circle
+		(at 10.5 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2b6f6dfd-9797-4bb2-9f7c-641e6fbf10d4")
+	)
+	(pad "9" thru_hole circle
+		(at 14 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "264c6e5c-0fd6-49c3-91ea-cf23a1791fc4")
+	)
+	(pad "10" thru_hole circle
+		(at 14 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "879e842e-664f-4ddf-9cdb-64378a96ba49")
+	)
+	(pad "11" thru_hole circle
+		(at 17.5 0)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b7e85c33-e52d-4b31-9282-e0da7f9ea4a0")
+	)
+	(pad "12" thru_hole circle
+		(at 17.5 -7)
+		(size 2.025 2.025)
+		(drill 1.35)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1e497f0e-e4c5-4e7e-8912-d0adc8901720")
+	)
+	(model "${KIPRJMOD}/project_library/project_library_3D/1824460000.stp"
+		(offset
+			(xyz -2.099999873 -5.449999727 -3.349999854)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

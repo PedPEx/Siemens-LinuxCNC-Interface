@@ -1,0 +1,260 @@
+(footprint "HDR-SMD_6P-P2.54-V-M-LS4.8_R2"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -9.144 0 -90)
+		(layer "F.SilkS")
+		(uuid "af96845a-6711-453e-8134-4abe2a192f4b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "ProgHeader"
+		(at 9.144 1.016 -90)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "f523d749-8ff6-44c9-b25e-f1358f0a0282")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "easyeda2kicad:HDR-SMD_6P-P2.54-V-M-LS4.8_R2"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a187d22c-8362-4180-b1d9-95b5156fcef9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.lcsc.com/product-detail/Pin-Headers_XKB-Connection-X6511WVS-06H-C60D48R2_C2883763.html"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e17047c9-1539-422f-973c-9fcf88e86a0d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Generic connector, single row, 01x06, script generated"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9ab2d1ad-347b-48e3-812f-e004d02aeb5f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC Part" "C2883763"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a2798d5c-aa36-48f7-918a-31261ceb0133")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -7.62 -1.25)
+		(end -7.62 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6d7c2ff5-f56d-4353-b75c-2128e028df23")
+	)
+	(fp_line
+		(start -7.62 1.25)
+		(end -7.16 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6ce6af26-b3e9-4d75-9239-8df8a6745836")
+	)
+	(fp_line
+		(start -5.53 1.25)
+		(end -2.09 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bc0ed118-8d37-4b53-811e-41ab9c5c6c7a")
+	)
+	(fp_line
+		(start -4.62 -1.25)
+		(end -7.62 -1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "28dd83b7-d3c3-4a4e-a6a1-19cabe8cc1db")
+	)
+	(fp_line
+		(start -0.46 1.25)
+		(end 3 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0e875127-8d43-4020-aea0-d98c2f503b1c")
+	)
+	(fp_line
+		(start 0.46 -1.25)
+		(end -3 -1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7c149ad2-eb92-4130-8fd0-ee31a19ac335")
+	)
+	(fp_line
+		(start 4.62 1.25)
+		(end 7.62 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "112cdc8b-81d0-4daa-94e8-6c2eb44d4098")
+	)
+	(fp_line
+		(start 5.53 -1.25)
+		(end 2.09 -1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "58051969-d1f6-41b4-8075-5ad1efc294a3")
+	)
+	(fp_line
+		(start 7.62 -1.25)
+		(end 7.16 -1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "3c925bb0-9e5f-40e8-8d46-b44ec5f14443")
+	)
+	(fp_line
+		(start 7.62 -1.25)
+		(end 7.62 1.25)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5038eb2d-0dfa-402c-b119-b92b740a3c18")
+	)
+	(fp_circle
+		(center -7.49 1.9)
+		(end -7.36 1.9)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "cff3944d-e718-4ff1-a465-30d32e09c931")
+	)
+	(fp_circle
+		(center -7.62 2.4)
+		(end -7.59 2.4)
+		(stroke
+			(width 0.06)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "3256aae6-afd0-487b-8077-393052b1706c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c0cd3cbf-37aa-4788-832c-bb5d748b1f61")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -6.35 1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "84b4b2f4-d9d0-499c-a925-e584f25bbb8a")
+	)
+	(pad "2" smd rect
+		(at -3.81 -1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "ed431e90-bd64-475d-97eb-9cda29be0d2d")
+	)
+	(pad "3" smd rect
+		(at -1.27 1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "0fcfd028-584e-4a86-8b28-8af402313e24")
+	)
+	(pad "4" smd rect
+		(at 1.27 -1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e466213c-607c-43a3-955f-025d84c0f6b0")
+	)
+	(pad "5" smd rect
+		(at 3.81 1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "69d0a7cb-8725-486a-9c1d-1b0203d107bc")
+	)
+	(pad "6" smd rect
+		(at 6.35 -1.8 180)
+		(size 1.27 2.2)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "37b0ab0b-cac5-43be-95ef-7c5e90ba5bec")
+	)
+	(model "${KIPRJMOD}/project_library/project_library_3D/HDR-SMD_6P-P2.54-V-M-LS4.8_R2.wrl"
+		(offset
+			(xyz 0 -0 -0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

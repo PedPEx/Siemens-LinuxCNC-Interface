@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Inputs/Outputs Extenders")
-		(date "2024-10-18")
-		(rev "v0.9.3")
+		(date "2024-10-20")
+		(rev "v0.9.4")
 	)
 	(lib_symbols
 		(symbol "Device:C"
@@ -137,508 +137,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "easyeda2kicad:PCA9555PW,118"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 0 26.67 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "PCA9555PW,118"
-				(at 0 -26.67 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
-				(at 0 -29.21 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/I-O-Expansion_NXP_PCA9555PW-118_PCA9555PW-118_C128392.html"
-				(at 0 -31.75 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C128392"
-				(at 0 -34.29 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "PCA9555PW,118_0_1"
-				(rectangle
-					(start -12.7 24.13)
-					(end 12.7 -24.13)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin output line
-					(at 17.78 19.05 180)
-					(length 5.08)
-					(name "~{INT}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -13.97 0)
-					(length 5.08)
-					(name "IO0_6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -16.51 0)
-					(length 5.08)
-					(name "IO0_7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -21.59 0)
-					(length 5.08)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 13.97 180)
-					(length 5.08)
-					(name "IO1_0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 11.43 180)
-					(length 5.08)
-					(name "IO1_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 8.89 180)
-					(length 5.08)
-					(name "IO1_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 6.35 180)
-					(length 5.08)
-					(name "IO1_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 3.81 180)
-					(length 5.08)
-					(name "IO1_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 1.27 180)
-					(length 5.08)
-					(name "IO1_5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "18"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 -1.27 180)
-					(length 5.08)
-					(name "IO1_6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "19"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 11.43 0)
-					(length 5.08)
-					(name "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 -3.81 180)
-					(length 5.08)
-					(name "IO1_7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "20"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 8.89 0)
-					(length 5.08)
-					(name "A0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 16.51 0)
-					(length 5.08)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 17.78 21.59 180)
-					(length 5.08)
-					(name "SDA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -17.78 21.59 0)
-					(length 5.08)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "24"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -17.78 6.35 0)
-					(length 5.08)
-					(name "A2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 1.27 0)
-					(length 5.08)
-					(name "IO0_0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -1.27 0)
-					(length 5.08)
-					(name "IO0_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -3.81 0)
-					(length 5.08)
-					(name "IO0_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -6.35 0)
-					(length 5.08)
-					(name "IO0_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -8.89 0)
-					(length 5.08)
-					(name "IO0_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at -17.78 -11.43 0)
-					(length 5.08)
-					(name "IO0_5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -855,6 +353,510 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "project_library:PCA9555PW,118"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 26.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PCA9555PW,118"
+				(at 0 -26.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+				(at 0 -29.21 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://lcsc.com/product-detail/I-O-Expansion_NXP_PCA9555PW-118_PCA9555PW-118_C128392.html"
+				(at 0 -31.75 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "LCSC Part" "C128392"
+				(at 0 -34.29 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PCA9555PW,118_0_1"
+				(rectangle
+					(start -12.7 24.13)
+					(end 12.7 -24.13)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 17.78 19.05 180)
+					(length 5.08)
+					(name "~{INT}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -16.51 0)
+					(length 5.08)
+					(name "IO0_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 11.43 180)
+					(length 5.08)
+					(name "IO1_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 8.89 180)
+					(length 5.08)
+					(name "IO1_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 6.35 180)
+					(length 5.08)
+					(name "IO1_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 3.81 180)
+					(length 5.08)
+					(name "IO1_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 1.27 180)
+					(length 5.08)
+					(name "IO1_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 -1.27 180)
+					(length 5.08)
+					(name "IO1_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 11.43 0)
+					(length 5.08)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 -3.81 180)
+					(length 5.08)
+					(name "IO1_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 8.89 0)
+					(length 5.08)
+					(name "A0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 16.51 0)
+					(length 5.08)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 21.59 0)
+					(length 5.08)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "24"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -17.78 6.35 0)
+					(length 5.08)
+					(name "A2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PCA9555PW,118_1_1"
+				(pin bidirectional line
+					(at -17.78 -13.97 0)
+					(length 5.08)
+					(name "IO0_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -21.59 0)
+					(length 5.08)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 13.97 180)
+					(length 5.08)
+					(name "IO1_0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 21.59 180)
+					(length 5.08)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 1.27 0)
+					(length 5.08)
+					(name "IO0_0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -1.27 0)
+					(length 5.08)
+					(name "IO0_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -3.81 0)
+					(length 5.08)
+					(name "IO0_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -6.35 0)
+					(length 5.08)
+					(name "IO0_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -8.89 0)
+					(length 5.08)
+					(name "IO0_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -11.43 0)
+					(length 5.08)
+					(name "IO0_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7238,7 +7240,7 @@
 		(uuid "fd490608-cdba-4956-9560-2a224065fe11")
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 247.65 137.16 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7262,7 +7264,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 247.65 166.37 0)
 			(effects
 				(font
@@ -7380,7 +7382,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 113.03 137.16 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7404,7 +7406,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 113.03 166.37 0)
 			(effects
 				(font
@@ -7522,7 +7524,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 49.53 137.16 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7546,7 +7548,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 49.53 166.37 0)
 			(effects
 				(font
@@ -7664,7 +7666,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 180.34 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7689,7 +7691,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 180.34 90.17 0)
 			(effects
 				(font
@@ -7807,7 +7809,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 49.53 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7832,7 +7834,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 49.53 90.17 0)
 			(effects
 				(font
@@ -8555,7 +8557,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 113.03 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8580,7 +8582,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 113.03 90.17 0)
 			(effects
 				(font
@@ -8973,7 +8975,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 247.65 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8998,7 +9000,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 247.65 90.17 0)
 			(effects
 				(font
@@ -9251,7 +9253,7 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:PCA9555PW,118")
+		(lib_id "project_library:PCA9555PW,118")
 		(at 180.34 137.16 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9275,7 +9277,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
+		(property "Footprint" "project_library:TSSOP-24_L7.8-W4.4-P0.65-LS6.4-BL"
 			(at 180.34 166.37 0)
 			(effects
 				(font

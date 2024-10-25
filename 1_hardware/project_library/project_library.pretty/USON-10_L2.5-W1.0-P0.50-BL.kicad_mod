@@ -1,0 +1,215 @@
+(footprint "USON-10_L2.5-W1.0-P0.50-BL"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -0.309603 3.043779 0)
+		(layer "F.SilkS")
+		(uuid "476f3f26-8861-4cae-aeaf-215bbf5bdd38")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "TPD4E05U06DQAR_C138714"
+		(at 0 4.41 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "451d0746-c291-497a-b4b5-2a6ac374f66f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "easyeda2kicad:USON-10_L2.5-W1.0-P0.50-BL"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "77cbdf4e-49dd-4ec8-a69c-861313692ce9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://lcsc.com/product-detail/TVS_TI_TPD4E05U06DQAR_TPD4E05U06DQAR_C138714.html"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "35e65f95-570b-4ba1-a3ff-8807610b55da")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "142065ff-e3db-4880-a70c-bdc837e92a7e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "LCSC Part" "C138714"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ec4ee5ef-1ba6-4165-b4f1-3a5f167fe3ee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.33 0.58)
+		(end -1.33 -0.58)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "916fbb6b-49f3-46e5-aadc-ad1f65206bdd")
+	)
+	(fp_line
+		(start 1.33 -0.58)
+		(end 1.33 0.58)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7a622a2c-3064-4f65-a870-3ca3c33b84a1")
+	)
+	(fp_circle
+		(center -1 1.02)
+		(end -0.9 1.02)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "63e883d9-853b-4a8f-96cf-a5746282d4ee")
+	)
+	(fp_circle
+		(center -1 0.9)
+		(end -0.9 0.9)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill none)
+		(layer "Cmts.User")
+		(uuid "051a3cd5-6035-4f4f-980c-b37b611333d4")
+	)
+	(fp_circle
+		(center -1.25 0.5)
+		(end -1.22 0.5)
+		(stroke
+			(width 0.06)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "b1fee064-5d1e-482c-9033-b6d1d11a798f")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fbdd360a-1025-4ebe-9cfc-495fa7dbd4fc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1 0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "e3210523-bb20-404c-bcc7-67f475fce06c")
+	)
+	(pad "2" smd rect
+		(at -0.5 0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "98e899be-b409-454f-99a2-8a53a71549d5")
+	)
+	(pad "3" smd rect
+		(at 0 0.41)
+		(size 0.38 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "2d7970b1-03b6-41b3-8992-372f0493f1fa")
+	)
+	(pad "4" smd rect
+		(at 0.5 0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "b3b417a9-e86f-4427-9704-46e7b49c00cc")
+	)
+	(pad "5" smd rect
+		(at 1 0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "0897baa2-42aa-4106-b7fd-dd8ba47d6a61")
+	)
+	(pad "6" smd rect
+		(at 1 -0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "1b3f66db-5250-442a-98d1-076748cdd19e")
+	)
+	(pad "7" smd rect
+		(at 0.5 -0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "c3bfbf80-26c9-48d4-9954-11ab29d64d64")
+	)
+	(pad "8" smd rect
+		(at 0 -0.41)
+		(size 0.38 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "51e58923-dfe0-4938-b0fe-0f523a987a16")
+	)
+	(pad "9" smd rect
+		(at -0.5 -0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "203e68e8-a595-487b-8cc2-737cef10198e")
+	)
+	(pad "10" smd rect
+		(at -1 -0.41)
+		(size 0.25 0.61)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "be3ed70f-db0c-428d-96d8-3261a1ad5c97")
+	)
+	(model "${KIPRJMOD}/project_library/project_library_3D/USON-10_L2.5-W1.0-H0.6-P0.50.wrl"
+		(offset
+			(xyz 0 -0 -0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 270)
+		)
+	)
+)
