@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Headers 64Pin Siemens Module")
-		(date "2024-10-20")
-		(rev "v0.9.4")
+		(date "2024-10-27")
+		(rev "v0.9.5")
 	)
 	(lib_symbols
 		(symbol "power:+3V3"

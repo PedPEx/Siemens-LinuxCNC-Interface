@@ -9,8 +9,8 @@
 	(paper "A4")
 	(title_block
 		(title "Siemens-LinuxCNC-Interface")
-		(date "2024-10-20")
-		(rev "v0.9.4")
+		(date "2024-10-27")
+		(rev "v0.9.5")
 	)
 	(layers
 		(0 "F.Cu" signal)
@@ -5175,7 +5175,7 @@
 		(descr "Capacitor SMD 2220 (5750 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size from: http://datasheets.avx.com/AVX-HV_MLCC.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C1"
-			(at 2.921 4.191 360)
+			(at 2.921 4.191 0)
 			(layer "F.SilkS")
 			(uuid "a0f03b51-36e7-4883-9cb5-02ebb5716868")
 			(effects
@@ -28158,6 +28158,17 @@
 		(uuid "a73e4a02-72e7-4673-b7b3-d513a238059e")
 	)
 	(gr_rect
+		(start 153.927 41.361)
+		(end 163.927 51.361)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.SilkS")
+		(uuid "b53d52b0-e244-44ca-800a-f63d8b347fa2")
+	)
+	(gr_rect
 		(start 170.026768 29.483907)
 		(end 251.810922 34.433759)
 		(locked yes)
@@ -28781,6 +28792,18 @@
 		(at 167.217003 34.344362 0)
 		(layer "F.SilkS")
 		(uuid "44978479-5a4e-42b8-9ace-07c7d9e08e7b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "JLCJLCJLCJLCJLC"
+		(at 206.552 61.681 0)
+		(layer "F.SilkS")
+		(uuid "4b8a6bd0-6669-49bf-8e16-833c22523f95")
 		(effects
 			(font
 				(size 1 1)
@@ -43312,8 +43335,6 @@
 			(mode hatch)
 			(thermal_gap 0.3)
 			(thermal_bridge_width 0.5)
-			(smoothing chamfer)
-			(radius 1)
 			(hatch_thickness 2)
 			(hatch_gap 1.5)
 			(hatch_orientation 45)

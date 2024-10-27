@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Microcontroller logic and I2C busses")
-		(date "2024-10-20")
-		(rev "v0.9.4")
+		(date "2024-10-27")
+		(rev "v0.9.5")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x06_Pin"

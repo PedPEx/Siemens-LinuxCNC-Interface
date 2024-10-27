@@ -2,13 +2,13 @@
 This interface board is designed to be placed on the backside of an [old type](https://mall.industry.siemens.com/mall/de/de/Catalog/Product/6FC5103-0AD03-0AA0) Siemens Sinumerik840C machine control panel in order to be used as user input in LinuxCNC. I reverse engineered a control panel of type M (CNC-Mill - 6FC5103-0AD03-0AA0) for this project. All the IOs of these control panels are accessible through the two 64pin pinheaders. You can get these machine control panels pretty cheap on ebay.
 
 Interface:
-![v0.9.4](0_pictures/InterfaceBoard_Render_v094.png "Blender render v0.9.4")
+![v0.9.5](0_pictures/InterfaceBoard_Render_v095.png "Blender render v0.9.5")
 
 Sinumerik840C Machine Control Panel:
 ![Sinumerik840C Machine Control Panel](0_pictures/Sinumeric_MachineControlPanel.jpg "Sinumerik840C Machine Control Panel")
 
 ## ToDo
-- ✅ finished prototype PCB (v0.9.4)
+- ✅ finished prototype PCB (v0.9.5)
 - 🔲 firmware for STM32L151C8
 - 🔲 tested intensively with LinuxCNC
 - 🔲 example config for LinuxCNC
