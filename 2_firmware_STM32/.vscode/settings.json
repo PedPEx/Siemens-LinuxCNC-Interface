@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "pca9555.h": "c",
+        "stm32l1xx_ll_i2c.h": "c",
+        "compare": "c",
+        "cmath": "c"
+    },
+    "cortex-debug.variableUseNaturalFormat": false
+}

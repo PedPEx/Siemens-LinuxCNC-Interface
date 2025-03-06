@@ -8,8 +8,8 @@ Sinumerik840C Machine Control Panel:
 ![Sinumerik840C Machine Control Panel](0_pictures/Sinumeric_MachineControlPanel.jpg "Sinumerik840C Machine Control Panel")
 
 ## ToDo
-- ✅ finished prototype PCB (v0.9.5)
-- 🔲 firmware for STM32L151C8
+- ✅ finished prototype PCB (v0.9.6)
+- 🔲 firmware for STM32L151CC
 - 🔲 tested intensively with LinuxCNC
 - 🔲 example config for LinuxCNC
 
@@ -25,7 +25,7 @@ Most of the IO on the three terminal blocks is directly wired into the microcont
 As terminal blocks [Weidmüller 1824460000 - LSF-SMT 3.50/06/90 3.5SN BK TU](https://catalog.weidmueller.com/catalog/Start.do?ObjectID=1824460000) were used - because i had them at hand. But any headers or screw terminals with a 3.5 mm pitch can be used here.
 
 ## Usage/Software
-This interface board is meant to be used in combination with the software [LinuxCNC_ArduinoConnector](https://github.com/AlexmagToast/LinuxCNC_ArduinoConnector). It does not operate with an Arduino, but with a much more capable [STM32L151C8](https://www.st.com/en/microcontrollers-microprocessors/stm32l151c8.html). The STM32 just emulates a serial port and sends the same signals to the LinuxCNC component like the Arduino would. The L1 series of STM32 was chosen because of its bootloader
+This interface board is meant to be used in combination with the software [LinuxCNC_ArduinoConnector](https://github.com/AlexmagToast/LinuxCNC_ArduinoConnector). It does not operate with an Arduino, but with a much more capable [STM32L151C8](https://www.st.com/en/microcontrollers-microprocessors/stm32l151cc.html). The STM32 just emulates a serial port and sends the same signals to the LinuxCNC component like the Arduino would. The L1 series of STM32 was chosen because of its bootloader
 
 ## Limitations
 Do not use this board for any time critical porpuses!

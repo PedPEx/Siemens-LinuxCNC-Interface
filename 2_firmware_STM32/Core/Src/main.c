@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -18,11 +18,16 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "fatfs.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "pca9555.h"
+#include "pca9555.c"
+#include <stdbool.h>
+
+#define number_of_exp 8
+#define number_of_input_exp 5
 
 /* USER CODE END Includes */
 
@@ -47,6 +52,8 @@ ADC_HandleTypeDef hadc;
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
+TIM_HandleTypeDef htim3;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -57,12 +64,22 @@ static void MX_GPIO_Init(void);
 static void MX_ADC_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+PCA9555_HandleTypeDef exp[number_of_exp];
+
+//Data multidimensional arrays
+//[A,B,C,D,E,ENC1,ENC2,Key,Res][Inputs,Outputs][Bits]
+bool data_ABC[3][2][16];
+bool data_DEandMisc[6][2][8];
+
+uint16_t raw_exp_inputdata[number_of_input_exp];
+uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
 
 /* USER CODE END 0 */
 
@@ -99,8 +116,11 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   MX_USB_DEVICE_Init();
-  MX_FATFS_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  HAL_StatusTypeDef HAL_status = 0, returnvalue = 0;
+  init_expanders();
+  init_dataregs();
 
   /* USER CODE END 2 */
 
@@ -109,7 +129,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -283,6 +303,51 @@ static void MX_I2C2_Init(void)
 }
 
 /**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 3200;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 5000;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -298,19 +363,200 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pins : PB12 PB13 PB14 PB15
-                           PB4 PB5 PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15
-                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_8|GPIO_PIN_9;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(DebugLED_GPIO_Port, DebugLED_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : DebugLED_Pin */
+  GPIO_InitStruct.Pin = DebugLED_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(DebugLED_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Exp_Int4_Pin Exp_Int5_Pin Exp_Int6_Pin Exp_Int7_Pin
+                           Exp_Int0_Pin Exp_Int1_Pin Exp_Int2_Pin Exp_Int3_Pin */
+  GPIO_InitStruct.Pin = Exp_Int5_Pin|Exp_Int6_Pin|Exp_Int7_Pin|Exp_Int8_Pin
+                          |Exp_Int1_Pin|Exp_Int2_Pin|Exp_Int3_Pin|Exp_Int4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
+
+
 /* USER CODE BEGIN 4 */
+
+//init Data Registers
+init_dataregs()
+{
+  //raw data register
+  for(uint8_t i = 0; i < number_of_input_exp; i++)
+  {
+    pca9555_readRegister(&exp[input_expander[i]], PCA9555_CB_INPUTS_PORTS, &raw_exp_inputdata[i]);
+    raw_exp_inputdata[i] = ~(raw_exp_inputdata[i]);
+  }
+}
+
+//init Expanders
+void init_expanders()
+{
+  //pause interrupts
+  __disable_irq();
+  uint16_t address_expander = 0x20;
+  HAL_StatusTypeDef returnvalueinit = 0;
+  
+  //init Expanders on i2c busses
+  returnvalueinit += pca9555_init(&exp[4], &hi2c2, address_expander++);
+  returnvalueinit += pca9555_init(&exp[5], &hi2c2, address_expander++);
+  returnvalueinit += pca9555_init(&exp[6], &hi2c2, address_expander++);
+  returnvalueinit += pca9555_init(&exp[7], &hi2c2, address_expander++);
+  returnvalueinit += pca9555_init(&exp[0], &hi2c1, address_expander++);
+  returnvalueinit += pca9555_init(&exp[1], &hi2c1, address_expander++);
+  returnvalueinit += pca9555_init(&exp[2], &hi2c1, address_expander++);
+  returnvalueinit += pca9555_init(&exp[3], &hi2c1, address_expander);
+
+  //init Expanders used as Outputs (EXP0, EXP3, EXP4 and EXP7)
+  //init EXP0
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[0], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
+    returnvalueinit += pca9555_DigitalWrite(&exp[0], i, PCA9555_BIT_SET);
+  }
+  //init EXP3 - First Byte Outputs, Second Byte: 4 LSBits Outputs, 4 MSBits Inputs
+  for(uint8_t i = 0; i <= 7; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[3], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
+    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
+  }
+  for(uint8_t i = 12; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[3], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
+    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
+  }
+  //init EXP4
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[4], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
+    returnvalueinit += pca9555_DigitalWrite(&exp[4], i, PCA9555_BIT_SET);
+  }
+  //init EXP7
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[7], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
+    returnvalueinit += pca9555_DigitalWrite(&exp[7], i, PCA9555_BIT_SET);
+  }
+
+  /*
+  //init Expanders used as Inputs (EXP1, EXP2, EXP3, EXP5 and EXP6)
+  //init EXP1
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[1], i, PCA9555_PIN_INPUT_MODE, PCA9555_POLARITY_INVERTED);
+  }
+  //init EXP2
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[2], i, PCA9555_PIN_INPUT_MODE, PCA9555_POLARITY_INVERTED);
+  }
+  //init EXP3
+  for(uint8_t i = 8; i <= 11; i++) //just 4 LSBits in second Byte are Inputs
+  {
+    returnvalueinit += pca9555_pinMode(&exp[3], i, PCA9555_PIN_INPUT_MODE, PCA9555_POLARITY_INVERTED);
+  }
+  //init EXP5
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[5], i, PCA9555_PIN_INPUT_MODE, PCA9555_POLARITY_INVERTED);
+  }
+  //init EXP6
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_pinMode(&exp[6], i, PCA9555_PIN_INPUT_MODE, PCA9555_POLARITY_INVERTED);
+  } */
+
+
+
+  //reenable interrupts
+  __enable_irq();
+
+  //Error handling
+  /*if (returnvalueinit != HAL_OK)
+  {
+    Error_Handler();
+  }*/
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  HAL_StatusTypeDef HALreturn = 0;
+  //find out which expander got input change
+  uint8_t exp_interrupt = 10;
+  uint8_t exp_data = 0;
+
+  switch (GPIO_Pin)
+  {
+    case GPIO_PIN_4: //exp_int1 - not used
+      exp_interrupt = 0;
+      exp_data = 0;
+      break;
+    case GPIO_PIN_5: //exp_int2
+      exp_interrupt = 1;
+      exp_data = 0;
+      break;
+    case GPIO_PIN_8: //exp_int3
+      exp_interrupt = 2;
+      exp_data = 1;
+      break;
+    case GPIO_PIN_9: //exp_int4
+      exp_interrupt = 3;
+      exp_data = 2;
+      break;
+    case GPIO_PIN_12: //exp_int5 - not used
+      exp_interrupt = 4;
+      exp_data = 0;
+      break;
+    case GPIO_PIN_13: //exp_int6
+      exp_interrupt = 5;
+      exp_data = 3;
+      break;
+    case GPIO_PIN_14: //exp_int7
+      exp_interrupt = 6;
+      exp_data = 4;
+      break;
+    case GPIO_PIN_15: //exp_int8 - not used
+      exp_interrupt = 7;
+      exp_data = 0;
+      break;
+    default:
+      return HAL_ERROR;
+      break;
+  }
+
+  //read corresponding expander inputs
+  HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &raw_exp_inputdata[exp_data]);
+  raw_exp_inputdata[exp_data] = ~(raw_exp_inputdata[exp_data]);
+
+  //Error handling
+  if (HALreturn != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+
 
 /* USER CODE END 4 */
 

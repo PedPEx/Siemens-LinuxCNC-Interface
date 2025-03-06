@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Microcontroller logic and I2C busses")
-		(date "2024-10-27")
-		(rev "v0.9.5")
+		(date "2024-12-09")
+		(rev "v0.9.6")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x06_Pin"
@@ -3184,10 +3184,6 @@
 		(uuid "a9189991-2a51-41d8-9fb9-5acf0a5641f2")
 	)
 	(no_connect
-		(at 128.27 44.45)
-		(uuid "bcae9697-6399-4a65-9cf6-b0682d8f05c5")
-	)
-	(no_connect
 		(at 68.58 87.63)
 		(uuid "c877e3c8-8fc7-4dde-82c5-f59793814bd5")
 	)
@@ -3456,6 +3452,16 @@
 			(type default)
 		)
 		(uuid "1acde445-c829-422c-b6b9-cafa16cc5352")
+	)
+	(wire
+		(pts
+			(xy 134.62 44.45) (xy 128.27 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c20d8db-c794-4d92-883c-9dbf89acc6b9")
 	)
 	(wire
 		(pts
@@ -4719,6 +4725,16 @@
 	)
 	(wire
 		(pts
+			(xy 134.62 36.83) (xy 134.62 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b84422ef-5d1a-4617-a1b0-a7a1f68c9f3f")
+	)
+	(wire
+		(pts
 			(xy 34.29 92.71) (xy 68.58 92.71)
 		)
 		(stroke
@@ -4816,6 +4832,26 @@
 			(type default)
 		)
 		(uuid "c4b4e85f-530b-46e9-864b-70f297bd4faf")
+	)
+	(wire
+		(pts
+			(xy 140.97 39.37) (xy 140.97 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5ef01d7-2b21-46ce-9150-ceac3381346e")
+	)
+	(wire
+		(pts
+			(xy 140.97 36.83) (xy 134.62 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6012f5a-d27e-4adf-9b21-2a88579db34f")
 	)
 	(wire
 		(pts
@@ -8121,6 +8157,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 140.97 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "70695488-f1c5-40f0-8b49-5de20cd2f81a")
+		(property "Reference" "#PWR026"
+			(at 140.97 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 140.97 43.434 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 140.97 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 140.97 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5da6e971-cbd3-463d-9cab-6f5f8cd35ea5")
+		)
+		(instances
+			(project "Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor"
+				(path "/82333ccb-6661-4401-8681-de9334259747/2cfe2c7e-83df-45dd-b60e-672a1c018e21"
+					(reference "#PWR026")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 237.49 139.7 180)
 		(unit 1)
@@ -8798,7 +8899,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8fc9cb58-d685-4dfe-a9a3-5f1d3e4b883c")
 		(property "Reference" "R8"
 			(at 37.846 66.04 0)
@@ -8876,7 +8977,7 @@
 				)
 			)
 		)
-		(property "Value" "STM32L151C8T6"
+		(property "Value" "STM32L151CCT6"
 			(at 98.425 34.29 0)
 			(effects
 				(font
@@ -8893,7 +8994,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/product-detail/ST-Microelectronics_STMicroelectronics_STM32L151C8T6_STM32L151C8T6_C9861.html"
+		(property "Datasheet" "https://www.lcsc.com/product-detail/Microcontrollers-MCU-MPU-SOC_STMicroelectronics-STM32L151CCT6_C2149675.html"
 			(at 99.06 125.73 0)
 			(effects
 				(font
@@ -8911,7 +9012,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C9861"
+		(property "LCSC Part" "C2149675"
 			(at 99.06 128.27 0)
 			(effects
 				(font
