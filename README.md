@@ -8,8 +8,9 @@ Sinumerik840C Machine Control Panel:
 ![Sinumerik840C Machine Control Panel](0_pictures/Sinumeric_MachineControlPanel.jpg "Sinumerik840C Machine Control Panel")
 
 ## ToDo
-- ✅ finished prototype PCB (v0.9.6)
-- 🔲 firmware for STM32L151CC
+- ✅ finished prototype PCB (v0.9.5)
+- 🔲 finished prototype PCB (v0.9.6)
+- 🔲 firmware for STM32L151CC (~50%)
 - 🔲 tested intensively with LinuxCNC
 - 🔲 example config for LinuxCNC
 
