@@ -69,7 +69,14 @@ static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
+
 uint8_t getinput(uint8_t expander, uint8_t pin);
+void setOutput(uint8_t pin, uint8_t state);
+void sendData(char sig, uint8_t pin, uint8_t state);
+void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len);
+void init_expanders();
+void init_dataregs();
+void serial_com_Handler();
 
 /* USER CODE END PFP */
 
@@ -77,13 +84,14 @@ uint8_t getinput(uint8_t expander, uint8_t pin);
 /* USER CODE BEGIN 0 */
 uint8_t SerialConnected = 0; //0=not connected; 1=connected; 2=connection lost
 uint32_t LastTickConnected = 0;
+bool manual_CMD_Mode = 0;
 
 PCA9555_HandleTypeDef exp[number_of_exp];
 
 //Data multidimensional arrays
 //[A,B,C,D,E,ENC1,ENC2,Key,Res][Inputs,Outputs][Bits]
-bool data_ABC[3][2][16];
-bool data_DEandMisc[6][2][8];
+uint16_t inputData_lastcycle[6];
+
 
 uint16_t raw_exp_inputdata[number_of_input_exp];
 uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
@@ -136,7 +144,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    com_alive();
+    serial_com_Handler();
 
     
     /* USER CODE BEGIN 3 */
@@ -409,31 +417,56 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void com_alive()
+void serial_com_Handler()
 {
-  if(LastTickConnected == 0)
+  //waiting for connection
+  if(SerialConnected == 0)
   {
-    while(LastTickConnected == 0)
+    //turn of DebugLED/Connection Status LED
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, false);
+    //wait for connection
+    while(SerialConnected == 0)
     {
       CDC_Transmit_FS("E0:0\n", 5);
       HAL_Delay(200);
     }
-
-    //send "connected"
-    CDC_Transmit_FS("first connect\n", 15);
-    SerialConnected = 1;
   }
-  if(HAL_GetTick() - LastTickConnected > timeout)
+
+  //first connection
+  if(LastTickConnected == 0 && SerialConnected == 0)
   {
-    if(SerialConnected == 1)
-    {
-      CDC_Transmit_FS("disconnected\n", 15);
-      SerialConnected = 2;
-    }
-    else
-    {
-      SerialConnected = 1;
-    }
+    //send "first connect"
+    CDC_Transmit_FS("first connect\n", 15);
+    //set as connected
+    SerialConnected = 1;
+    //switch on DebugLED
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
+  }
+  //every other
+  else
+  {
+    //send "connected"
+    //CDC_Transmit_FS("first connect\n", 15);
+    //set as connected
+    SerialConnected = 1;
+    //switch on DebugLED
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
+  }
+
+  //timeout triggered? just checked in auto-mode (manual_CMD_Mode == 0)
+  if(HAL_GetTick() - LastTickConnected > timeout && manual_CMD_Mode == 0 && LastTickConnected != 0)
+  {
+    //send info
+    CDC_Transmit_FS("disconnected\n", 15);
+    //set connection status to connection lost
+    SerialConnected = 2; 
+  }
+
+  //if connection status is connection lost => blink LED 2x per second 
+  while(SerialConnected == 2)
+  {
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
+    HAL_Delay(250);
   }
 }
 
@@ -585,15 +618,24 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
 
   //read corresponding expander inputs
-  HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &raw_exp_inputdata[exp_data]);
-  raw_exp_inputdata[exp_data] = ~(raw_exp_inputdata[exp_data]);
-
-  for(uint8_t i = 0; i < 16; i++)
-  {
-    uint8_t pressed_input = getinput(exp_interrupt, i);
-    uint8_t button = pressed_input % 16; 
-  }
+  uint16_t temp_exp_inputs = 0;
+  HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &temp_exp_inputs);
+  temp_exp_inputs = ~(temp_exp_inputs);
   
+  temp_exp_inputs = temp_exp_inputs ^ raw_exp_inputdata[exp_data];
+  raw_exp_inputdata[exp_data] = raw_exp_inputdata[exp_data] ^ temp_exp_inputs;
+
+  if(SerialConnected == 1)
+  {
+    for(uint8_t i = 0; i < 16; i++)
+    {
+      if((temp_exp_inputs >> i) & 0x0001)
+      {
+        uint8_t pressed_input = getinput(exp_interrupt, i);
+        sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+      }
+    }
+  }
 
   //Error handling
   if (HALreturn != HAL_OK)
@@ -606,12 +648,36 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
 {
   char CMD = 'a';
-int pin = 0, state = 0;
+  int pin = 0, state = 0;
   int i = sscanf((char*)Buf, "%c%d:%d", &CMD, &pin, &state);
   
   if(CMD >= 'A' && CMD <= 'Z' && i == 3)
   {
-    execute_RX_CMD(CMD, pin, state);
+    if(CMD =='E')
+    {
+      SerialConnected = 1;
+      LastTickConnected = HAL_GetTick();
+      if(pin == 0)
+      {
+        manual_CMD_Mode = 0;
+      }
+      else if(pin == 1)
+      {
+        manual_CMD_Mode = 1;
+      }
+      else
+      {
+        ;//FAULT
+      }
+    }
+    else if(CMD == 'O' && SerialConnected == 1)
+    {
+      setOutput(pin, state);
+    }
+    else
+    {
+      ;//Command not implemented
+    }
   }
   else
   {
@@ -620,28 +686,10 @@ int pin = 0, state = 0;
   }
 }
 
-void execute_RX_CMD(char CMD, uint8_t pin, uint8_t state)
-{
-  switch (CMD)
-  {
-  case 'E':
-    SerialConnected = 1;
-    LastTickConnected = HAL_GetTick();
-    break;
-  
-  case 'O':
-    setOutput(pin, state);
-    break;
-  
-  default:
-    break;
-  }
-}
-
 void sendData(char sig, uint8_t pin, uint8_t state)
 {
   char sendBuf[12];
-  sprintf(sendBuf, "%c%i:%i", sig, pin, state);
+  sprintf(sendBuf, "%c%i:%i\n", sig, pin, state);
   CDC_Transmit_FS(sendBuf, strlen(sendBuf));
 }
 
@@ -662,7 +710,9 @@ void setOutput(uint8_t pin, uint8_t state)
 
 uint8_t getinput(uint8_t expander, uint8_t pin)
 {
-  static const uint8_t inputs[128] = {0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, //expander0 - U4 - EXP_INT1 - just outputs (B & C)
+  //8 bit value - 4 MSB = ; 4 LSB = 16 bit per Expander
+  //expander 0: 0000|0000 up to 0000|1111; expander 1: 0001|0000 up to 0001|1111; ... expander 7: 0111|0000 up to 0111|1111; 
+  static const uint8_t inputs[128] = {0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //expander0 - U4 - EXP_INT1 - just outputs (B & C)
                                       41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
                                       23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
                                       0,  0,  0,  0,  0,  0,  0,  0,  52, 53, 54, 55, 0,  0,  0,  0,  //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)

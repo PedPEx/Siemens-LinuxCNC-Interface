@@ -10,7 +10,7 @@ Sinumerik840C Machine Control Panel:
 ## ToDo
 - ✅ finished prototype PCB (v0.9.5)
 - 🔲 finished prototype PCB (v0.9.6)
-- 🔲 firmware for STM32L151CC (~70%)
+- 🔲 firmware for STM32L151CC (~90%)
 - 🔲 tested intensively with LinuxCNC
 - 🔲 example config for LinuxCNC
 
