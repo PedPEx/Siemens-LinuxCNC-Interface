@@ -19,6 +19,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_device.h"
+#include "usbd_cdc_if.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -28,6 +30,7 @@
 
 #define number_of_exp 8
 #define number_of_input_exp 5
+#define timeout 10000 //10 seconds
 
 /* USER CODE END Includes */
 
@@ -66,11 +69,15 @@ static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
+uint8_t getinput(uint8_t expander, uint8_t pin);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t SerialConnected = 0; //0=not connected; 1=connected; 2=connection lost
+uint32_t LastTickConnected = 0;
+
 PCA9555_HandleTypeDef exp[number_of_exp];
 
 //Data multidimensional arrays
@@ -129,10 +136,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+    com_alive();
+
     
     /* USER CODE BEGIN 3 */
+
+    /* USER CODE END 3 */
   }
-  /* USER CODE END 3 */
 }
 
 /**
@@ -399,8 +409,36 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void com_alive()
+{
+  if(LastTickConnected == 0)
+  {
+    while(LastTickConnected == 0)
+    {
+      CDC_Transmit_FS("E0:0\n", 5);
+      HAL_Delay(200);
+    }
+
+    //send "connected"
+    CDC_Transmit_FS("first connect\n", 15);
+    SerialConnected = 1;
+  }
+  if(HAL_GetTick() - LastTickConnected > timeout)
+  {
+    if(SerialConnected == 1)
+    {
+      CDC_Transmit_FS("disconnected\n", 15);
+      SerialConnected = 2;
+    }
+    else
+    {
+      SerialConnected = 1;
+    }
+  }
+}
+
 //init Data Registers
-init_dataregs()
+void init_dataregs()
 {
   //raw data register
   for(uint8_t i = 0; i < number_of_input_exp; i++)
@@ -499,6 +537,7 @@ void init_expanders()
   }*/
 }
 
+//Interrupt Service Rutine
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   HAL_StatusTypeDef HALreturn = 0;
@@ -549,6 +588,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &raw_exp_inputdata[exp_data]);
   raw_exp_inputdata[exp_data] = ~(raw_exp_inputdata[exp_data]);
 
+  for(uint8_t i = 0; i < 16; i++)
+  {
+    uint8_t pressed_input = getinput(exp_interrupt, i);
+    uint8_t button = pressed_input % 16; 
+  }
+  
+
   //Error handling
   if (HALreturn != HAL_OK)
   {
@@ -556,6 +602,92 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
 }
 
+//"ISR" for incoming serial msg
+void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
+{
+  char CMD = 'a';
+int pin = 0, state = 0;
+  int i = sscanf((char*)Buf, "%c%d:%d", &CMD, &pin, &state);
+  
+  if(CMD >= 'A' && CMD <= 'Z' && i == 3)
+  {
+    execute_RX_CMD(CMD, pin, state);
+  }
+  else
+  {
+    char sendBuf[16] = "FAULT DETECTED!";
+    CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+  }
+}
+
+void execute_RX_CMD(char CMD, uint8_t pin, uint8_t state)
+{
+  switch (CMD)
+  {
+  case 'E':
+    SerialConnected = 1;
+    LastTickConnected = HAL_GetTick();
+    break;
+  
+  case 'O':
+    setOutput(pin, state);
+    break;
+  
+  default:
+    break;
+  }
+}
+
+void sendData(char sig, uint8_t pin, uint8_t state)
+{
+  char sendBuf[12];
+  sprintf(sendBuf, "%c%i:%i", sig, pin, state);
+  CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+}
+
+//setting output X? to state ? -> A15->1
+void setOutput(uint8_t pin, uint8_t state)
+{
+  //8 bit value - 4 MSB = Expander 0...7; 4 LSB = 16 bit per Expander
+  //expander 0: 0000|0000 up to 0000|1111; expander 1: 0001|0000 up to 0001|1111; ... expander 7: 0111|0000 up to 0111|1111; 
+  static const uint8_t outputs[64] = {67, 75, 74, 66, 73, 68, 65, 69, 70, 64, 71, 72,255,114, 76, 77, //column A (expander 4 & 7)
+                                      55, 54, 53, 52, 51, 50, 49, 48, 15, 14, 13, 12, 11, 10, 9, 255, //column B (expander 0 & 3)
+                                      118,8,  7, 117, 6,  1, 116, 2,  3, 115, 4,  5, 119,255, 0, 255, //column C (expander 0 & 7)
+                                      112,113,78,79,  60, 61, 62, 63,255,255,255,255,255,255,255,255};//column D, E, Res (expander 3, 4 & 7)
+  
+  uint8_t expander_no = (outputs[pin] / 16);
+  uint8_t hw_pin = (outputs[pin])%16;
+  pca9555_DigitalWrite(&exp[expander_no], hw_pin, 0b1 ^ state);
+}
+
+uint8_t getinput(uint8_t expander, uint8_t pin)
+{
+  static const uint8_t inputs[128] = {0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, //expander0 - U4 - EXP_INT1 - just outputs (B & C)
+                                      41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
+                                      23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
+                                      0,  0,  0,  0,  0,  0,  0,  0,  52, 53, 54, 55, 0,  0,  0,  0,  //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)
+                                      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //expander4 - U8 - EXP_INT5 - just outputs (A & E)
+                                      9,  5,  6,  7,  3,  8,  0,  10, 96, 97, 11, 99, 4,  98, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
+                                      14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
+                                      0,  0,  0,  0,  0,  0,  0,  0, 255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, D, E & ENC1)
+
+  /* completed with outputs - not needed, reverse search also not possible
+  uint8_t input[64] = { 46, 37, 39, 40, 42, 43, 36, 34, 33, 30, 29, 28, 27, 26, 25, 24, //expander0 - U4 - EXP_INT1 - just outputs (B & C)
+                        41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
+                        23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
+                        23, 22, 21, 20, 19, 18, 17, 16, 52, 53, 54, 55, 52, 53, 54, 55, //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)
+                        9,  6,  3,  0,  5,  7,  8,  10, 11, 4,  2,  1,  14, 15, 50, 51, //expander4 - U8 - EXP_INT5 - just outputs (A & E)
+                        9,  5,  6,  7,  3,  8,  0,  10, 96, 97, 11, 99, 4,  98, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
+                        14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
+                        48, 49, 13, 41, 38, 35, 32, 44,255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, C & D)          */           
+  
+  uint8_t array_position = 16*expander + pin;
+
+  if (array_position >= 128) {
+    return 255;  // Return an error code (or handle as needed)
+  }
+  return inputs[array_position];
+}
 
 
 /* USER CODE END 4 */
