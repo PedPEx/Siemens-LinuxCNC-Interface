@@ -77,23 +77,30 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len);
 void init_expanders();
 void init_dataregs();
 void serial_com_Handler();
+void updateEncoder(uint8_t pin);
+void sendAllInputStatus();
+void readADC();
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t SerialConnected = 0; //0=not connected; 1=connected; 2=connection lost
-uint32_t LastTickConnected = 0;
-bool manual_CMD_Mode = 0;
 
+//Serial COM varaibles
+uint8_t SerialConnected = 0; //0=not connected; 1=connected; 2=connection lost
+uint32_t LastTickConnected = 0; //HAL Tick variable - used for serial timeout detection
+bool manual_CMD_Mode = 0; //used for costum CMD "E1:0", in manual mode no timeout occurs
+
+//array of expander IDs, get's initialised in the init_expanders function
 PCA9555_HandleTypeDef exp[number_of_exp];
 
-//Data multidimensional arrays
-//[A,B,C,D,E,ENC1,ENC2,Key,Res][Inputs,Outputs][Bits]
-uint16_t inputData_lastcycle[6];
-
-
+//varaible to find out which inputs changed
 uint16_t raw_exp_inputdata[number_of_input_exp];
+//Encoder data
+uint8_t encoder[2] = {255,255};
+
+
+//all input expanders with ID
 uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
 
 /* USER CODE END 0 */
@@ -417,6 +424,10 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+/**
+  * @brief  Serial Handler for serial communication with LinuxCNC or for manual mode
+  * @retval None
+  */
 void serial_com_Handler()
 {
   //waiting for connection
@@ -432,34 +443,49 @@ void serial_com_Handler()
     }
   }
 
+  //ToDO - the first if part is NEVER EXECUTED!
   //first connection
   if(LastTickConnected == 0 && SerialConnected == 0)
   {
     //send "first connect"
-    CDC_Transmit_FS("first connect\n", 15);
+    //CDC_Transmit_FS("first connect\n", 15);
+    CDC_Transmit_FS("F0:0\n", 5);
     //set as connected
     SerialConnected = 1;
     //switch on DebugLED
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
+
+    //send initial state
+    sendAllInputStatus();
   }
   //every other
-  else
+  else if(SerialConnected == 0)
   {
     //send "connected"
+    CDC_Transmit_FS("F1:0\n", 5);
     //CDC_Transmit_FS("first connect\n", 15);
     //set as connected
     SerialConnected = 1;
     //switch on DebugLED
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
+
+    //send initial state
+    sendAllInputStatus();
   }
 
   //timeout triggered? just checked in auto-mode (manual_CMD_Mode == 0)
   if(HAL_GetTick() - LastTickConnected > timeout && manual_CMD_Mode == 0 && LastTickConnected != 0)
   {
-    //send info
-    CDC_Transmit_FS("disconnected\n", 15);
+    if(SerialConnected == 1)
+    {
+      //send info
+      //CDC_Transmit_FS("disconnected\n", 15);
+      CDC_Transmit_FS("F0:1\n", 5);
+    }
     //set connection status to connection lost
     SerialConnected = 2; 
+    //reset all outputs
+    init_ExpOutputs();
   }
 
   //if connection status is connection lost => blink LED 2x per second 
@@ -470,26 +496,76 @@ void serial_com_Handler()
   }
 }
 
-//init Data Registers
+/**
+  * @brief  init Data Registers state
+  * @retval None
+  */
 void init_dataregs()
 {
-  //raw data register
+  //iterate over all input expanders
   for(uint8_t i = 0; i < number_of_input_exp; i++)
   {
+    //read raw input data from every expander
     pca9555_readRegister(&exp[input_expander[i]], PCA9555_CB_INPUTS_PORTS, &raw_exp_inputdata[i]);
+    //invert register
     raw_exp_inputdata[i] = ~(raw_exp_inputdata[i]);
+
+    init_ExpOutputs();
+  }
+
+  updateEncoder(64);
+  updateEncoder(96);
+  readADC();
+}
+
+/**
+  * @brief  Turn off all Expander outputs
+  * @retval None
+  */
+void init_ExpOutputs()
+{
+  HAL_StatusTypeDef returnvalueinit = 0;
+
+  for(uint8_t i = 0; i <= 15; i++)
+  {
+    //init EXP0
+    returnvalueinit += pca9555_DigitalWrite(&exp[0], i, PCA9555_BIT_SET);
+    //init EXP4
+    returnvalueinit += pca9555_DigitalWrite(&exp[4], i, PCA9555_BIT_SET);
+    //init EXP7
+    returnvalueinit += pca9555_DigitalWrite(&exp[7], i, PCA9555_BIT_SET);
+  }
+  //init EXP3 - First Byte Outputs, Second Byte: 4 LSBits Outputs, 4 MSBits Inputs
+  for(uint8_t i = 0; i <= 7; i++)
+  {
+    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
+  }
+  for(uint8_t i = 12; i <= 15; i++)
+  {
+    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
+  }
+
+  //Error handling
+  if (returnvalueinit != HAL_OK)
+  {
+    Error_Handler();
   }
 }
 
-//init Expanders
+/**
+  * @brief  Initialise all expanders
+  * @retval None
+  */
 void init_expanders()
 {
   //pause interrupts
   __disable_irq();
+  //I2C start adress
   uint16_t address_expander = 0x20;
+  //tmp value for error detection
   HAL_StatusTypeDef returnvalueinit = 0;
   
-  //init Expanders on i2c busses
+  //init Expanders on i2c busses - i know, the layout is "a bit weird" ...
   returnvalueinit += pca9555_init(&exp[4], &hi2c2, address_expander++);
   returnvalueinit += pca9555_init(&exp[5], &hi2c2, address_expander++);
   returnvalueinit += pca9555_init(&exp[6], &hi2c2, address_expander++);
@@ -504,31 +580,28 @@ void init_expanders()
   for(uint8_t i = 0; i <= 15; i++)
   {
     returnvalueinit += pca9555_pinMode(&exp[0], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
-    returnvalueinit += pca9555_DigitalWrite(&exp[0], i, PCA9555_BIT_SET);
   }
   //init EXP3 - First Byte Outputs, Second Byte: 4 LSBits Outputs, 4 MSBits Inputs
   for(uint8_t i = 0; i <= 7; i++)
   {
     returnvalueinit += pca9555_pinMode(&exp[3], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
-    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
   }
   for(uint8_t i = 12; i <= 15; i++)
   {
     returnvalueinit += pca9555_pinMode(&exp[3], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
-    returnvalueinit += pca9555_DigitalWrite(&exp[3], i, PCA9555_BIT_SET);
   }
   //init EXP4
   for(uint8_t i = 0; i <= 15; i++)
   {
     returnvalueinit += pca9555_pinMode(&exp[4], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
-    returnvalueinit += pca9555_DigitalWrite(&exp[4], i, PCA9555_BIT_SET);
   }
   //init EXP7
   for(uint8_t i = 0; i <= 15; i++)
   {
     returnvalueinit += pca9555_pinMode(&exp[7], i, PCA9555_PIN_OUTPUT_MODE, PCA9555_POLARITY_NORMAL);
-    returnvalueinit += pca9555_DigitalWrite(&exp[7], i, PCA9555_BIT_SET);
   }
+
+  init_ExpOutputs();
 
   /*
   //init Expanders used as Inputs (EXP1, EXP2, EXP3, EXP5 and EXP6)
@@ -563,6 +636,7 @@ void init_expanders()
   //reenable interrupts
   __enable_irq();
 
+  //COMMENTED OUT because the command is working and setting all registers as intended but is not reporting correctly to HAL
   //Error handling
   /*if (returnvalueinit != HAL_OK)
   {
@@ -570,132 +644,171 @@ void init_expanders()
   }*/
 }
 
-//Interrupt Service Rutine
+/**
+  * @brief  ISR for the external interrupts
+  * @retval None
+  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+  //temp error variable
   HAL_StatusTypeDef HALreturn = 0;
   //find out which expander got input change
-  uint8_t exp_interrupt = 10;
-  uint8_t exp_data = 0;
+  uint8_t exp_interrupt = 255;  //init with error value
+  uint8_t exp_data = 255;       //init with error value
 
+  //Find out which expander initiated interrupt
   switch (GPIO_Pin)
   {
-    case GPIO_PIN_4: //exp_int1 - not used
-      exp_interrupt = 0;
-      exp_data = 0;
-      break;
+    /* case GPIO_PIN_4: //exp_int1 - no inputs
+      exp_interrupt = 0; //expander 0
+      exp_data = 255;
+      break; */
     case GPIO_PIN_5: //exp_int2
-      exp_interrupt = 1;
+      exp_interrupt = 1; //expander 1
       exp_data = 0;
       break;
     case GPIO_PIN_8: //exp_int3
-      exp_interrupt = 2;
+      exp_interrupt = 2; //expander 2
       exp_data = 1;
       break;
     case GPIO_PIN_9: //exp_int4
-      exp_interrupt = 3;
+      exp_interrupt = 3; //expander 3
       exp_data = 2;
       break;
-    case GPIO_PIN_12: //exp_int5 - not used
-      exp_interrupt = 4;
-      exp_data = 0;
-      break;
+    /* case GPIO_PIN_12: //exp_int5 - no inputs
+      exp_interrupt = 4; //expander 4
+      exp_data = 255;
+      break; */
     case GPIO_PIN_13: //exp_int6
-      exp_interrupt = 5;
+      exp_interrupt = 5; //expander 5
       exp_data = 3;
       break;
     case GPIO_PIN_14: //exp_int7
-      exp_interrupt = 6;
+      exp_interrupt = 6; //expander 6
       exp_data = 4;
       break;
-    case GPIO_PIN_15: //exp_int8 - not used
-      exp_interrupt = 7;
-      exp_data = 0;
-      break;
+    /* case GPIO_PIN_15: //exp_int8 - no inputs
+      exp_interrupt = 7; //expander 7
+      exp_data = 255;
+      break; */
     default:
-      return HAL_ERROR;
+      //return HAL_ERROR;
+      Error_Handler();
       break;
   }
 
-  //read corresponding expander inputs
+  //temp variable for storing read inputs and later calculating differences via bitwise XOR
   uint16_t temp_exp_inputs = 0;
+  //reading inputdata from expander that initiated interrupt
   HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &temp_exp_inputs);
+  //invert read value, bacause Siemens HMI uses Pull-Ups on all normal inputs and Pull-Downs on all "safety inputs"
   temp_exp_inputs = ~(temp_exp_inputs);
   
+  //find out which inputs changed since last interrupt or initial input read
   temp_exp_inputs = temp_exp_inputs ^ raw_exp_inputdata[exp_data];
+  //update value to detect changed pin(s) in the next interrupt event 
   raw_exp_inputdata[exp_data] = raw_exp_inputdata[exp_data] ^ temp_exp_inputs;
 
+  //if serial communication is active
   if(SerialConnected == 1)
   {
+    //test every bit of the 2 bytes for changed pin(s)
     for(uint8_t i = 0; i < 16; i++)
     {
+      //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
+      //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
       if((temp_exp_inputs >> i) & 0x0001)
       {
+        //look up which input is connected to corresponding expander input pin
         uint8_t pressed_input = getinput(exp_interrupt, i);
+        //send state of the pin via virtual serial port
         sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
       }
     }
   }
 
   //Error handling
-  if (HALreturn != HAL_OK)
+  if (HALreturn != HAL_OK || exp_data == 255 || exp_interrupt == 255)
   {
     Error_Handler();
   }
 }
 
-//"ISR" for incoming serial msg
+/**
+  * @brief  "ISR" for incoming serial msg
+  * @retval None
+  */
 void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
 {
-  char CMD = 'a';
-  int pin = 0, state = 0;
-  int i = sscanf((char*)Buf, "%c%d:%d", &CMD, &pin, &state);
+  char CMD = 'a';                                             //variable for received command - see ArduinoConnector docs for mor info
+  int pin = 0, state = 0;                                     //corresponding pin from Command, in the following example marked as 7: "O7:1"
+  int i = sscanf((char*)Buf, "%c%d:%d", &CMD, &pin, &state);  //write received text to their corresponding variable
   
+  //check for valid serial CMD
   if(CMD >= 'A' && CMD <= 'Z' && i == 3)
   {
+    //serial connection command?
     if(CMD =='E')
     {
-      SerialConnected = 1;
-      LastTickConnected = HAL_GetTick();
-      if(pin == 0)
+      SerialConnected = 1;                //set serial status to connected 
+      LastTickConnected = HAL_GetTick();  //write last Tick to tmp variable for timeout detection
+      sendAllInputStatus();               //send initial state
+
+      if(pin == 0)                        //machine mode
       {
         manual_CMD_Mode = 0;
       }
-      else if(pin == 1)
+      else if(pin == 1)                   //manual mode
       {
         manual_CMD_Mode = 1;
       }
       else
       {
-        ;//FAULT
+        //FAULT
+        char sendBuf[15] = "Command fault!\n";
+        CDC_Transmit_FS(sendBuf, strlen(sendBuf));
       }
     }
+    //command to write output if connected
     else if(CMD == 'O' && SerialConnected == 1)
     {
+      //set output to sent state
       setOutput(pin, state);
     }
     else
     {
-      ;//Command not implemented
+      char sendBuf[20] = "command not found!\n";
+      CDC_Transmit_FS(sendBuf, strlen(sendBuf));
     }
   }
   else
   {
-    char sendBuf[16] = "FAULT DETECTED!";
+    char sendBuf[16] = "fault detected!\n";
     CDC_Transmit_FS(sendBuf, strlen(sendBuf));
   }
 }
 
+/**
+  * @brief  send data via serial
+  * @retval None
+  */
 void sendData(char sig, uint8_t pin, uint8_t state)
 {
+  //tmp variable to build message
   char sendBuf[12];
+  //build message and write that to sendBuf
   sprintf(sendBuf, "%c%i:%i\n", sig, pin, state);
+  //transmit message via serial
   CDC_Transmit_FS(sendBuf, strlen(sendBuf));
 }
 
-//setting output X? to state ? -> A15->1
+/**
+  * @brief  setting output X? to state ? -> A15->1
+  * @retval None
+  */
 void setOutput(uint8_t pin, uint8_t state)
 {
+  //LUT (LookUpTable)
   //8 bit value - 4 MSB = Expander 0...7; 4 LSB = 16 bit per Expander
   //expander 0: 0000|0000 up to 0000|1111; expander 1: 0001|0000 up to 0001|1111; ... expander 7: 0111|0000 up to 0111|1111; 
   static const uint8_t outputs[64] = {67, 75, 74, 66, 73, 68, 65, 69, 70, 64, 71, 72,255,114, 76, 77, //column A (expander 4 & 7)
@@ -703,24 +816,50 @@ void setOutput(uint8_t pin, uint8_t state)
                                       118,8,  7, 117, 6,  1, 116, 2,  3, 115, 4,  5, 119,255, 0, 255, //column C (expander 0 & 7)
                                       112,113,78,79,  60, 61, 62, 63,255,255,255,255,255,255,255,255};//column D, E, Res (expander 3, 4 & 7)
   
+  
+  //calculate expander from outputs-LUT (LUT = LookUpTable)
+  //the 4 MSBs indicate which expander needs to be written to - identical to devide by 16 or right shift by 4 bits
   uint8_t expander_no = (outputs[pin] / 16);
+  //calculate expander pin from outputs-LUT (LUT = LookUpTable)
+  //the 4 LSBs indicate which expander needs to be written to - identical to modulo by 16 or by masking the 4 least segnificant bits
   uint8_t hw_pin = (outputs[pin])%16;
+
+  //Error Handling
+  if(expander_no > number_of_exp-1 || outputs[pin] == 255 || state < 0 || state > 1)
+  {
+    if(SerialConnected == 1 && manual_CMD_Mode == 0)
+    {
+      CDC_Transmit_FS("F1:1\n", 5);
+      return;
+    }
+    if(SerialConnected == 1 && manual_CMD_Mode == 1)
+    {
+      CDC_Transmit_FS("F1:1\nOutput write Fault!\n",25);
+      return;
+    }
+  }
+
+  //write to calculated pin - state needs to be inverted
   pca9555_DigitalWrite(&exp[expander_no], hw_pin, 0b1 ^ state);
 }
 
+/**
+  * @brief  find overall/software pin with expander-pin
+  * @retval returns software/overall pin
+  */
 uint8_t getinput(uint8_t expander, uint8_t pin)
 {
+  //LUT (LookUpTable)
   //8 bit value - 4 MSB = ; 4 LSB = 16 bit per Expander
   //expander 0: 0000|0000 up to 0000|1111; expander 1: 0001|0000 up to 0001|1111; ... expander 7: 0111|0000 up to 0111|1111; 
   static const uint8_t inputs[128] = {0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //expander0 - U4 - EXP_INT1 - just outputs (B & C)
-                                      41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
+                                      41, 37, 38, 39, 35, 40, 32, 42, 57, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
                                       23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
                                       0,  0,  0,  0,  0,  0,  0,  0,  52, 53, 54, 55, 0,  0,  0,  0,  //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)
                                       0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //expander4 - U8 - EXP_INT5 - just outputs (A & E)
                                       9,  5,  6,  7,  3,  8,  0,  10, 96, 97, 11, 99, 4,  98, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
-                                      14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
+                                      14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69, 58, 13, 56, 59, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E, Key & ENC1)
                                       0,  0,  0,  0,  0,  0,  0,  0, 255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, D, E & ENC1)
-
   /* completed with outputs - not needed, reverse search also not possible
   uint8_t input[64] = { 46, 37, 39, 40, 42, 43, 36, 34, 33, 30, 29, 28, 27, 26, 25, 24, //expander0 - U4 - EXP_INT1 - just outputs (B & C)
                         41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
@@ -731,12 +870,85 @@ uint8_t getinput(uint8_t expander, uint8_t pin)
                         14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
                         48, 49, 13, 41, 38, 35, 32, 44,255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, C & D)          */           
   
+  //calculate position of value in array
   uint8_t array_position = 16*expander + pin;
 
-  if (array_position >= 128) {
-    return 255;  // Return an error code (or handle as needed)
+  //logical check 1/ error handling
+  if (array_position >= 128) 
+  {
+    //return 255;
+    Error_Handler();
   }
+
+  //logical check 2
+  if (inputs[array_position] == 255) 
+  {
+    if(SerialConnected == 1 && manual_CMD_Mode == 1)
+    {
+      CDC_Transmit_FS("Input reading Fault!\n", 25);
+      Error_Handler();
+    }
+    if(SerialConnected == 1 && manual_CMD_Mode == 0)
+    {
+      CDC_Transmit_FS("F1:1\n", 5);
+      Error_Handler();
+    }
+  }
+
+  //encoder?
+  if(inputs[array_position] >= 64 && inputs[array_position] != 255)
+  {
+    updateEncoder(pin);
+  }
+
+  //return software/overall pin
   return inputs[array_position];
+}
+
+/**
+  * @brief  updates encoder data for corresponding ENC given via pin
+  * @retval None
+  */
+void updateEncoder(uint8_t pin)
+{
+  ;//ToDO
+}
+
+/**
+  * @brief  function to look for every pressed input and send that via serial
+  * @retval None
+  */
+void sendAllInputStatus()
+{
+  //ToDo
+  //initial read all inputs
+  init_dataregs();
+  
+  //send initial status
+  for(uint8_t k = 0; k <= 4; k++)
+  {
+    for(uint8_t i = 0; i < 16; i++)
+    {
+      //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
+      //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
+      if((raw_exp_inputdata[k] >> i) & 0x0001)
+      {
+        //look up which input is connected to corresponding expander input pin
+        uint8_t pressed_input = getinput(input_expander[k], i);
+        //send state of the pin via virtual serial port
+        sendData('I', pressed_input, (raw_exp_inputdata[k] >> i) & 0x0001);
+      }
+    }
+  }
+}
+
+/**
+  * @brief  Reads the ADC values
+  * @retval None
+  */
+void readADC()
+{
+  ;//ToDo
 }
 
 

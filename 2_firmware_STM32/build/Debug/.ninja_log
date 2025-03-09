@@ -1,13 +1,13 @@
 # ninja log v5
 45	992	7629991866662914	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj	e1811838cfed108d
 52	971	7629991866092455	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj	fcb0b36e81610e51
-4	278	7630845469451451	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj	741f3e9cf6de328e
+35	321	7632504381601651	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj	741f3e9cf6de328e
 83	942	7629991866377746	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pcd_ex.c.obj	233f705355721c48
 924	1778	7629991875494623	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_adc.c.obj	197c3e69b439ef5c
 1020	1401	7629991871532588	CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj	d3e6cada5863f277
 96	985	7629991866592821	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_rcc.c.obj	b25f14d4b147b072
 64	1012	7629991867438220	CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj	f77eab9faa726818
-92	886	7629991866417769	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.c.obj	4892f31e97f9858b
+11	249	7632419368900520	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.c.obj	4892f31e97f9858b
 57	999	7629991866742925	CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usb_device.c.obj	58b4fbc139d58128
 139	900	7629991866447772	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.c.obj	c13118ae8a540d22
 121	949	7629991866622913	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.c.obj	c7f0a41de0304a97
@@ -23,7 +23,7 @@
 88	936	7629991866602930	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_ll_usb.c.obj	ec297b5fef84c075
 887	1615	7629991873696576	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pwr.c.obj	4d9d17be8a7fbdfa
 893	1741	7629991874855935	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pwr_ex.c.obj	2bca0a9eeee1651
-279	463	7630845471181438	Siemens_LinuxCNC_Interface.elf	9f77acca03c82725
+323	528	7632504383469869	Siemens_LinuxCNC_Interface.elf	9f77acca03c82725
 917	1707	7629991874320709	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.c.obj	b8c233a6d464cba0
 1006	1551	7629991872903411	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj	a656a40719376b96
 1000	1822	7629991875959842	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj	6acf377713c52d91
@@ -35,4 +35,4 @@
 992	1783	7629991875559882	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj	c30f8b1c64e220bf
 943	1953	7629991877270584	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.c.obj	a94abf08f491815f
 936	1947	7629991877220578	CMakeFiles/Siemens_LinuxCNC_Interface.dir/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_i2c.c.obj	9187ae67810c23aa
-31	471	7630858677754074	build.ninja	989c6c04efa3fd18
+31	471	7632531964747295	build.ninja	989c6c04efa3fd18
