@@ -77,9 +77,11 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len);
 void init_expanders();
 void init_dataregs();
 void serial_com_Handler();
-void updateEncoder(uint8_t pin);
+void updateEncoder(uint8_t pin, uint8_t pin_state);
 void sendAllInputStatus();
 void readADC();
+uint8_t greyToBin(uint8_t n);
+
 
 /* USER CODE END PFP */
 
@@ -97,7 +99,9 @@ PCA9555_HandleTypeDef exp[number_of_exp];
 //varaible to find out which inputs changed
 uint16_t raw_exp_inputdata[number_of_input_exp];
 //Encoder data
-uint8_t encoder[2] = {255,255};
+uint8_t enc_gray[2] = {0,0};
+uint8_t enc_pos[2] = {0,0};
+uint8_t enc_retval[2] = {0,0};
 
 
 //all input expanders with ID
@@ -225,7 +229,7 @@ static void MX_ADC_Init(void)
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc.Instance = ADC1;
-  hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
   hadc.Init.Resolution = ADC_RESOLUTION_12B;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc.Init.ScanConvMode = ADC_SCAN_DISABLE;
@@ -248,7 +252,7 @@ static void MX_ADC_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_4CYCLES;
+  sConfig.SamplingTime = ADC_SAMPLETIME_16CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -456,7 +460,7 @@ void serial_com_Handler()
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
 
     //send initial state
-    sendAllInputStatus();
+    //sendAllInputStatus();
   }
   //every other
   else if(SerialConnected == 0)
@@ -470,7 +474,7 @@ void serial_com_Handler()
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
 
     //send initial state
-    sendAllInputStatus();
+    //sendAllInputStatus();
   }
 
   //timeout triggered? just checked in auto-mode (manual_CMD_Mode == 0)
@@ -513,8 +517,8 @@ void init_dataregs()
     init_ExpOutputs();
   }
 
-  updateEncoder(64);
-  updateEncoder(96);
+  //updateEncoder(64);
+  //updateEncoder(96);
   readADC();
 }
 
@@ -721,8 +725,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       {
         //look up which input is connected to corresponding expander input pin
         uint8_t pressed_input = getinput(exp_interrupt, i);
-        //send state of the pin via virtual serial port
-        sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+  
+        //change on encoder?
+        if(pressed_input >= 64 && pressed_input <= 79)
+        {
+          //update encoder value(s)
+          updateEncoder(pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+          break;
+        }
+        else
+        {
+          //send state of individual pin via virtual serial port
+          sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+        }
       }
     }
   }
@@ -750,9 +765,13 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
     //serial connection command?
     if(CMD =='E')
     {
-      SerialConnected = 1;                //set serial status to connected 
+      if(SerialConnected != 1)
+      {
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true); //turn on LED
+        SerialConnected = 1;                        //set serial status to connected 
+        //sendAllInputStatus();                     //send initial state
+      }
       LastTickConnected = HAL_GetTick();  //write last Tick to tmp variable for timeout detection
-      sendAllInputStatus();               //send initial state
 
       if(pin == 0)                        //machine mode
       {
@@ -857,17 +876,17 @@ uint8_t getinput(uint8_t expander, uint8_t pin)
                                       23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
                                       0,  0,  0,  0,  0,  0,  0,  0,  52, 53, 54, 55, 0,  0,  0,  0,  //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)
                                       0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //expander4 - U8 - EXP_INT5 - just outputs (A & E)
-                                      9,  5,  6,  7,  3,  8,  0,  10, 96, 97, 11, 99, 4,  98, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
-                                      14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69, 58, 13, 56, 59, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E, Key & ENC1)
-                                      0,  0,  0,  0,  0,  0,  0,  0, 255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, D, E & ENC1)
+                                      9,  5,  6,  7,  3,  8,  0,  10, 72, 73, 11, 74, 4,  75, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
+                                      14, 64, 15, 65, 50, 66, 51, 67, 48, 49, 68, 58, 13, 56, 59, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E, Key & ENC1)
+                                      0,  0,  0,  0,  0,  0,  0,  0, 255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, D & E)
   /* completed with outputs - not needed, reverse search also not possible
   uint8_t input[64] = { 46, 37, 39, 40, 42, 43, 36, 34, 33, 30, 29, 28, 27, 26, 25, 24, //expander0 - U4 - EXP_INT1 - just outputs (B & C)
                         41, 37, 38, 39, 35, 40, 32, 42,113, 45, 43, 44, 36, 46, 34, 33, //expander1 - U5 - EXP_INT2 - just inputs  (C & Key)
                         23, 30, 22, 29, 21, 28, 20, 27, 26, 19, 25, 18, 24, 17, 16,255, //expander2 - U6 - EXP_INT3 - just inputs  (B)
                         23, 22, 21, 20, 19, 18, 17, 16, 52, 53, 54, 55, 52, 53, 54, 55, //expander3 - U7 - EXP_INT4 - inputs and outputs  (B & RES)
                         9,  6,  3,  0,  5,  7,  8,  10, 11, 4,  2,  1,  14, 15, 50, 51, //expander4 - U8 - EXP_INT5 - just outputs (A & E)
-                        9,  5,  6,  7,  3,  8,  0,  10, 96, 97, 11, 99, 4,  98, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
-                        14, 64, 15, 65, 50, 68, 51, 66, 48, 49, 69,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
+                        9,  5,  6,  7,  3,  8,  0,  10, 72, 73, 11, 75, 4,  74, 2,  1,  //expander5 - U9 - EXP_INT6 - just inputs (A & ENC2)
+                        14, 64, 15, 65, 50, 67, 51, 66, 48, 49, 68,114, 13,112,115, 12, //expander6 - U10- EXP_INT7 - just inputs (A, D, E & ENC1)
                         48, 49, 13, 41, 38, 35, 32, 44,255,255,255,255,255,255,255,255};//expander7 - U11- EXP_INT8 - just outputs (A, C & D)          */           
   
   //calculate position of value in array
@@ -895,12 +914,6 @@ uint8_t getinput(uint8_t expander, uint8_t pin)
     }
   }
 
-  //encoder?
-  if(inputs[array_position] >= 64 && inputs[array_position] != 255)
-  {
-    updateEncoder(pin);
-  }
-
   //return software/overall pin
   return inputs[array_position];
 }
@@ -909,9 +922,85 @@ uint8_t getinput(uint8_t expander, uint8_t pin)
   * @brief  updates encoder data for corresponding ENC given via pin
   * @retval None
   */
-void updateEncoder(uint8_t pin)
+void updateEncoder(uint8_t pin, uint8_t pin_state)
 {
-  ;//ToDO
+  //both encoders return bits in gray code, these are at first written in gray code to the enc_gray array
+  //then converted to the enc_pos value (the position) and then converted to the real value (enc_retval) printed on the Siemens Interface
+  
+  //state change of ENC1
+  if(pin >= 64 && pin <= 71)
+  {
+    //set bit to 0
+    if(pin_state == 0)
+    {
+      enc_gray[1] &= ~(0x01 << (pin - 64));
+    }
+    //set bit to 1
+    else
+    {
+      enc_gray[1] |= (0x01 << (pin - 64));
+    }
+    //gray to bin conversion
+    enc_pos[1] = greyToBin(enc_gray[1]);
+
+    //calculation of real position
+    if(enc_pos[1] >= 1 && enc_pos[1] <= 2)
+      enc_retval[1] = enc_pos[1] - 1;
+    else if(enc_pos[1] >= 3 && enc_pos[1] <= 6)
+      enc_retval[1] = (enc_pos[1] - 2)*2;
+    else if(enc_pos[1] >= 7 && enc_pos[1] <= 12)
+      enc_retval[1] = (enc_pos[1] - 6)*10;
+    else if(enc_pos[1] >= 13 && enc_pos[1] <= 23)
+      enc_retval[1] = (enc_pos[1] - 12)*5 + 65;
+    else
+      Error_Handler();
+
+    //send Data - TODO
+    //sendData('L', 1, enc_pos[1]);
+    sendData('R', 1, enc_retval[1]);
+  }
+  //state change of ENC2
+  else if(pin >= 72 && pin <= 79)
+  {
+    //set bit to 0
+    if(pin_state == 0)
+    {
+      enc_gray[0] &= ~(0x01 << (pin - 72));
+    }
+    //set bit to 1
+    else
+    {
+      enc_gray[0] |= (0x01 << (pin - 72));
+    }
+    //gray to bin conversion
+    enc_pos[0] = greyToBin(enc_gray[0]);
+
+    //calculation of real position
+    enc_retval[0] = enc_pos[0] * 5 + 45;
+
+    //send Data - TODO
+    //sendData('L', 0, enc_pos[0]);
+    sendData('R', 0, enc_retval[0]);
+}
+  //everything else -> Fault
+  else
+  {
+    return;
+  }
+}
+
+/**
+  * @brief  gray to bin converter found online https://www.geeksforgeeks.org/gray-to-binary-and-binary-to-gray-conversion/
+  * @retval binary value
+  */
+uint8_t greyToBin(uint8_t n) 
+{
+  uint8_t res = n;
+  while (n > 0) {
+      n >>= 1;
+      res ^= n;
+  }
+  return res;
 }
 
 /**
@@ -925,12 +1014,24 @@ void sendAllInputStatus()
   init_dataregs();
   
   //send initial status
-  for(uint8_t k = 0; k <= 4; k++)
+  for(uint8_t k = 0; k < number_of_input_exp; k++)
   {
+    //tmp variable to build message
+    char sendBuf[12];
+    //build message and write that to sendBuf
+    sprintf(sendBuf, "%i\n", (int*)raw_exp_inputdata[k]);
+    //transmit message via serial
+
+    uint8_t state = USBD_FAIL;
+    do
+    {
+      state = CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+    }while ((state != USBD_OK));
+
+
     for(uint8_t i = 0; i < 16; i++)
     {
-      //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
-      //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
+      //detect a high pin/bit
       if((raw_exp_inputdata[k] >> i) & 0x0001)
       {
         //look up which input is connected to corresponding expander input pin
