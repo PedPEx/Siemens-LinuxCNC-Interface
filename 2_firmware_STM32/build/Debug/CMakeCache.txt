@@ -232,15 +232,6 @@ Siemens_LinuxCNC_Interface_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Siemens_LinuxCNC_Interface_SOURCE_DIR:STATIC=C:/Users/Patrick/OneDrive/Dokumente/PCBs/Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor/2_firmware_STM32
 
-//Value Computed by CMake
-stm32cubemx_BINARY_DIR:STATIC=C:/Users/Patrick/OneDrive/Dokumente/PCBs/Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor/2_firmware_STM32/build/Debug/cmake/stm32cubemx
-
-//Value Computed by CMake
-stm32cubemx_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-stm32cubemx_SOURCE_DIR:STATIC=C:/Users/Patrick/OneDrive/Dokumente/PCBs/Siemens-Sinumerik840C-Maschinensteuertafel-Adaptor/2_firmware_STM32/cmake/stm32cubemx
-
 
 ########################
 # INTERNAL cache entries

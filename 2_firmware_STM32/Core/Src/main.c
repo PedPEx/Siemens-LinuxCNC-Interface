@@ -19,15 +19,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usb_device.h"
-#include "usbd_cdc_if.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "pca9555.h"
 #include "pca9555.c"
 #include <stdbool.h>
+#include "usbd_cdc_if.h"
+#include <stdio.h>
+#include <string.h>
 
+#define adc_used 1
 #define number_of_exp 8
 #define number_of_input_exp 5
 #define timeout 10000 //10 seconds
@@ -51,6 +53,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc;
+DMA_HandleTypeDef hdma_adc;
 
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
@@ -59,11 +62,40 @@ TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
 
+//Serial COM varaibles
+uint8_t SerialConnected = 0;    //0=not connected; 1=connected; 2=connection lost
+uint32_t LastTickConnected = 0; //HAL Tick variable - used for serial timeout detection
+bool manual_CMD_Mode = 0;       //used for costum CMD "E1:0", in manual mode no timeout occurs
+
+//array of expander IDs, get's initialised in the init_expanders function
+PCA9555_HandleTypeDef exp[number_of_exp];
+//variable for reading inputs when ISR was triggered
+bool inputChanged = false;    //true = inputs will be read; false = no toggled input detected
+uint16_t toggledGPIO = 0;      //toggled gpio pin (expander still needs to be determined)
+//varaible to find out which inputs changed
+uint16_t raw_exp_inputdata[number_of_input_exp];
+//Encoder data
+uint8_t enc_gray[2] = {0,0};
+uint8_t enc_pos[2] = {0,0};
+uint8_t enc_retval[2] = {0,0};
+
+//ADC variables
+uint16_t rawADCvalues[2];
+uint16_t oldADCvalues[2];
+uint16_t ADCvalues[2] = {0,0};
+bool adc_convCompleted = 0;
+uint8_t adc_hysteresis = 5;
+
+//all input expanders with ID
+uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_ADC_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
@@ -72,14 +104,13 @@ static void MX_TIM3_Init(void);
 
 uint8_t getinput(uint8_t expander, uint8_t pin);
 void setOutput(uint8_t pin, uint8_t state);
-void sendData(char sig, uint8_t pin, uint8_t state);
+void sendData(char sig, uint8_t pin, uint16_t state);
 void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len);
 void init_expanders();
 void init_dataregs();
 void serial_com_Handler();
-void updateEncoder(uint8_t pin, uint8_t pin_state);
+void updateandsendEncoder(uint8_t pin, uint8_t pin_state);
 void sendAllInputStatus();
-void readADC();
 uint8_t greyToBin(uint8_t n);
 
 
@@ -87,25 +118,6 @@ uint8_t greyToBin(uint8_t n);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-//Serial COM varaibles
-uint8_t SerialConnected = 0; //0=not connected; 1=connected; 2=connection lost
-uint32_t LastTickConnected = 0; //HAL Tick variable - used for serial timeout detection
-bool manual_CMD_Mode = 0; //used for costum CMD "E1:0", in manual mode no timeout occurs
-
-//array of expander IDs, get's initialised in the init_expanders function
-PCA9555_HandleTypeDef exp[number_of_exp];
-
-//varaible to find out which inputs changed
-uint16_t raw_exp_inputdata[number_of_input_exp];
-//Encoder data
-uint8_t enc_gray[2] = {0,0};
-uint8_t enc_pos[2] = {0,0};
-uint8_t enc_retval[2] = {0,0};
-
-
-//all input expanders with ID
-uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
 
 /* USER CODE END 0 */
 
@@ -115,7 +127,6 @@ uint8_t input_expander[number_of_input_exp] = {1,2,3,5,6};
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -138,6 +149,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_ADC_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
@@ -145,6 +157,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   HAL_StatusTypeDef HAL_status = 0, returnvalue = 0;
+
   init_expanders();
   init_dataregs();
 
@@ -156,11 +169,9 @@ int main(void)
   {
     /* USER CODE END WHILE */
     serial_com_Handler();
-
-    
     /* USER CODE BEGIN 3 */
 
-    /* USER CODE END 3 */
+  /* USER CODE END 3 */
   }
 }
 
@@ -232,17 +243,17 @@ static void MX_ADC_Init(void)
   hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
   hadc.Init.Resolution = ADC_RESOLUTION_12B;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc.Init.ScanConvMode = ADC_SCAN_DISABLE;
+  hadc.Init.ScanConvMode = ADC_SCAN_ENABLE;
   hadc.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc.Init.LowPowerAutoWait = ADC_AUTOWAIT_DISABLE;
   hadc.Init.LowPowerAutoPowerOff = ADC_AUTOPOWEROFF_DISABLE;
   hadc.Init.ChannelsBank = ADC_CHANNELS_BANK_A;
-  hadc.Init.ContinuousConvMode = DISABLE;
-  hadc.Init.NbrOfConversion = 1;
+  hadc.Init.ContinuousConvMode = ENABLE;
+  hadc.Init.NbrOfConversion = 2;
   hadc.Init.DiscontinuousConvMode = DISABLE;
   hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc.Init.DMAContinuousRequests = DISABLE;
+  hadc.Init.DMAContinuousRequests = ENABLE;
   if (HAL_ADC_Init(&hadc) != HAL_OK)
   {
     Error_Handler();
@@ -252,7 +263,17 @@ static void MX_ADC_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_16CYCLES;
+  sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
+  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  sConfig.SamplingTime = ADC_SAMPLETIME_192CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -377,6 +398,22 @@ static void MX_TIM3_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -384,8 +421,8 @@ static void MX_TIM3_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOH_CLK_ENABLE();
@@ -402,8 +439,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(DebugLED_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Exp_Int4_Pin Exp_Int5_Pin Exp_Int6_Pin Exp_Int7_Pin
-                           Exp_Int0_Pin Exp_Int1_Pin Exp_Int2_Pin Exp_Int3_Pin */
+  /*Configure GPIO pins : Exp_Int5_Pin Exp_Int6_Pin Exp_Int7_Pin Exp_Int8_Pin
+                           Exp_Int1_Pin Exp_Int2_Pin Exp_Int3_Pin Exp_Int4_Pin */
   GPIO_InitStruct.Pin = Exp_Int5_Pin|Exp_Int6_Pin|Exp_Int7_Pin|Exp_Int8_Pin
                           |Exp_Int1_Pin|Exp_Int2_Pin|Exp_Int3_Pin|Exp_Int4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -420,11 +457,9 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
-
-
 
 /* USER CODE BEGIN 4 */
 
@@ -447,49 +482,47 @@ void serial_com_Handler()
     }
   }
 
-  //ToDO - the first if part is NEVER EXECUTED!
-  //first connection
-  if(LastTickConnected == 0 && SerialConnected == 0)
+  //new ADC values?
+  if(adc_convCompleted == 1)
   {
-    //send "first connect"
-    //CDC_Transmit_FS("first connect\n", 15);
-    CDC_Transmit_FS("F0:0\n", 5);
-    //set as connected
-    SerialConnected = 1;
-    //switch on DebugLED
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
-
-    //send initial state
-    //sendAllInputStatus();
-  }
-  //every other
-  else if(SerialConnected == 0)
-  {
-    //send "connected"
-    CDC_Transmit_FS("F1:0\n", 5);
-    //CDC_Transmit_FS("first connect\n", 15);
-    //set as connected
-    SerialConnected = 1;
-    //switch on DebugLED
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true);
-
-    //send initial state
-    //sendAllInputStatus();
-  }
-
-  //timeout triggered? just checked in auto-mode (manual_CMD_Mode == 0)
-  if(HAL_GetTick() - LastTickConnected > timeout && manual_CMD_Mode == 0 && LastTickConnected != 0)
-  {
-    if(SerialConnected == 1)
+    ADCvalues[0] = (uint16_t)rawADCvalues[0] >> 2;
+    ADCvalues[1] = (uint16_t)rawADCvalues[1] >> 2;
+  
+    //just send data in case something changed beyond the hysteresis
+    if (abs((int)oldADCvalues[0] - (int)ADCvalues[0]) > adc_hysteresis && SerialConnected == 1)
     {
-      //send info
-      //CDC_Transmit_FS("disconnected\n", 15);
-      CDC_Transmit_FS("F0:1\n", 5);
+        sendData('A', 0, ADCvalues[0]);
+        oldADCvalues[0] = ADCvalues[0];
     }
-    //set connection status to connection lost
-    SerialConnected = 2; 
-    //reset all outputs
-    init_ExpOutputs();
+  
+    if (abs((int)oldADCvalues[1] - (int)ADCvalues[1]) > adc_hysteresis && SerialConnected == 1)
+    {
+        sendData('A', 1, ADCvalues[1]);
+        oldADCvalues[1] = ADCvalues[1];
+    }
+    
+    adc_convCompleted = 0;
+  }
+
+  //stuff to do when connection is established
+  if(SerialConnected == 1)
+  {
+    //timeout triggered? just checked in auto-mode (manual_CMD_Mode == 0)
+    if(HAL_GetTick() - LastTickConnected > timeout && manual_CMD_Mode == 0 && LastTickConnected != 0)
+    {
+      CDC_Transmit_FS("F0:1\r\n", 6);
+      //set connection status to connection lost
+      SerialConnected = 2; 
+      //reset all outputs
+      init_ExpOutputs();
+    }
+
+    //input changed?
+    if(inputChanged)
+    {
+      read_changed_Input(toggledGPIO);
+    }
+    //for more stuff
   }
 
   //if connection status is connection lost => blink LED 2x per second 
@@ -498,6 +531,110 @@ void serial_com_Handler()
     HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
     HAL_Delay(250);
   }
+}
+
+/**
+  * @brief  needs to be called when ISR for input change was detected
+  * @retval None
+  */
+void read_changed_Input(uint16_t GPIO_Pin)
+{
+  //temp error variable
+  HAL_StatusTypeDef HALreturn = 0;
+  //find out which expander got input change
+  uint8_t exp_interrupt = 255;  //init with error value
+  uint8_t exp_data = 255;       //init with error value
+
+  //Find out which expander initiated interrupt
+  switch (GPIO_Pin)
+  {
+    /* case GPIO_PIN_4: //exp_int1 - no inputs
+      exp_interrupt = 0; //expander 0
+      exp_data = 255;
+      break; */
+    case GPIO_PIN_5: //exp_int2
+      exp_interrupt = 1; //expander 1
+      exp_data = 0;
+      break;
+    case GPIO_PIN_8: //exp_int3
+      exp_interrupt = 2; //expander 2
+      exp_data = 1;
+      break;
+    case GPIO_PIN_9: //exp_int4
+      exp_interrupt = 3; //expander 3
+      exp_data = 2;
+      break;
+    /* case GPIO_PIN_12: //exp_int5 - no inputs
+      exp_interrupt = 4; //expander 4
+      exp_data = 255;
+      break; */
+    case GPIO_PIN_13: //exp_int6
+      exp_interrupt = 5; //expander 5
+      exp_data = 3;
+      break;
+    case GPIO_PIN_14: //exp_int7
+      exp_interrupt = 6; //expander 6
+      exp_data = 4;
+      break;
+    /* case GPIO_PIN_15: //exp_int8 - no inputs
+      exp_interrupt = 7; //expander 7
+      exp_data = 255;
+      break; */
+    default:
+      //return HAL_ERROR;
+      Error_Handler();
+      break;
+  }
+
+  //temp variable for storing read inputs and later calculating differences via bitwise XOR
+  uint16_t temp_exp_inputs = 0;
+  //reading inputdata from expander that initiated interrupt
+  HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &temp_exp_inputs);
+  //invert read value, bacause Siemens HMI uses Pull-Ups on all normal inputs and Pull-Downs on all "safety inputs"
+  temp_exp_inputs = ~(temp_exp_inputs);
+
+  //find out which inputs changed since last interrupt or initial input read
+  temp_exp_inputs = temp_exp_inputs ^ raw_exp_inputdata[exp_data];
+  //update value to detect changed pin(s) in the next interrupt event 
+  raw_exp_inputdata[exp_data] = raw_exp_inputdata[exp_data] ^ temp_exp_inputs;
+
+  //if serial communication is active
+  if(SerialConnected == 1)
+  {
+    //test every bit of the 2 bytes for changed pin(s)
+    for(uint8_t i = 0; i < 16; i++)
+    {
+      //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
+      //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
+      if((temp_exp_inputs >> i) & 0x0001)
+      {
+        //look up which input is connected to corresponding expander input pin
+        uint8_t pressed_input = getinput(exp_interrupt, i);
+
+        //change on encoder?
+        if(pressed_input >= 64 && pressed_input <= 79)
+        {
+          //update encoder value(s)
+          updateandsendEncoder(pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+          break;
+        }
+        else
+        {
+          //send state of individual pin via virtual serial port
+          sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+        }
+      }
+    }
+  }
+
+  //Error handling
+  if (HALreturn != HAL_OK || exp_data == 255 || exp_interrupt == 255)
+  {
+    Error_Handler();
+  }
+
+  //reset global flag
+  inputChanged = false;
 }
 
 /**
@@ -516,10 +653,6 @@ void init_dataregs()
 
     init_ExpOutputs();
   }
-
-  //updateEncoder(64);
-  //updateEncoder(96);
-  readADC();
 }
 
 /**
@@ -654,98 +787,108 @@ void init_expanders()
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  //temp error variable
-  HAL_StatusTypeDef HALreturn = 0;
-  //find out which expander got input change
-  uint8_t exp_interrupt = 255;  //init with error value
-  uint8_t exp_data = 255;       //init with error value
-
-  //Find out which expander initiated interrupt
-  switch (GPIO_Pin)
+  //handling serial output of pressed input in function serial_com_Handler if "true" - nicer solution, but not reliable working
+  if(false)
   {
-    /* case GPIO_PIN_4: //exp_int1 - no inputs
-      exp_interrupt = 0; //expander 0
-      exp_data = 255;
-      break; */
-    case GPIO_PIN_5: //exp_int2
-      exp_interrupt = 1; //expander 1
-      exp_data = 0;
-      break;
-    case GPIO_PIN_8: //exp_int3
-      exp_interrupt = 2; //expander 2
-      exp_data = 1;
-      break;
-    case GPIO_PIN_9: //exp_int4
-      exp_interrupt = 3; //expander 3
-      exp_data = 2;
-      break;
-    /* case GPIO_PIN_12: //exp_int5 - no inputs
-      exp_interrupt = 4; //expander 4
-      exp_data = 255;
-      break; */
-    case GPIO_PIN_13: //exp_int6
-      exp_interrupt = 5; //expander 5
-      exp_data = 3;
-      break;
-    case GPIO_PIN_14: //exp_int7
-      exp_interrupt = 6; //expander 6
-      exp_data = 4;
-      break;
-    /* case GPIO_PIN_15: //exp_int8 - no inputs
-      exp_interrupt = 7; //expander 7
-      exp_data = 255;
-      break; */
-    default:
-      //return HAL_ERROR;
-      Error_Handler();
-      break;
+    toggledGPIO = GPIO_Pin;
+    inputChanged = true;
   }
-
-  //temp variable for storing read inputs and later calculating differences via bitwise XOR
-  uint16_t temp_exp_inputs = 0;
-  //reading inputdata from expander that initiated interrupt
-  HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &temp_exp_inputs);
-  //invert read value, bacause Siemens HMI uses Pull-Ups on all normal inputs and Pull-Downs on all "safety inputs"
-  temp_exp_inputs = ~(temp_exp_inputs);
-  
-  //find out which inputs changed since last interrupt or initial input read
-  temp_exp_inputs = temp_exp_inputs ^ raw_exp_inputdata[exp_data];
-  //update value to detect changed pin(s) in the next interrupt event 
-  raw_exp_inputdata[exp_data] = raw_exp_inputdata[exp_data] ^ temp_exp_inputs;
-
-  //if serial communication is active
-  if(SerialConnected == 1)
+  //handling serial output of pressed input within ISR if "false" - not a good solution, but only reliable working one
+  else
   {
-    //test every bit of the 2 bytes for changed pin(s)
-    for(uint8_t i = 0; i < 16; i++)
+    //temp error variable
+    HAL_StatusTypeDef HALreturn = 0;
+    //find out which expander got input change
+    uint8_t exp_interrupt = 255;  //init with error value
+    uint8_t exp_data = 255;       //init with error value
+
+    //Find out which expander initiated interrupt
+    switch (GPIO_Pin)
     {
-      //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
-      //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
-      if((temp_exp_inputs >> i) & 0x0001)
+      /* case GPIO_PIN_4: //exp_int1 - no inputs
+        exp_interrupt = 0; //expander 0
+        exp_data = 255;
+        break; */
+      case GPIO_PIN_5: //exp_int2
+        exp_interrupt = 1; //expander 1
+        exp_data = 0;
+        break;
+      case GPIO_PIN_8: //exp_int3
+        exp_interrupt = 2; //expander 2
+        exp_data = 1;
+        break;
+      case GPIO_PIN_9: //exp_int4
+        exp_interrupt = 3; //expander 3
+        exp_data = 2;
+        break;
+      /* case GPIO_PIN_12: //exp_int5 - no inputs
+        exp_interrupt = 4; //expander 4
+        exp_data = 255;
+        break; */
+      case GPIO_PIN_13: //exp_int6
+        exp_interrupt = 5; //expander 5
+        exp_data = 3;
+        break;
+      case GPIO_PIN_14: //exp_int7
+        exp_interrupt = 6; //expander 6
+        exp_data = 4;
+        break;
+      /* case GPIO_PIN_15: //exp_int8 - no inputs
+        exp_interrupt = 7; //expander 7
+        exp_data = 255;
+        break; */
+      default:
+        //return HAL_ERROR;
+        Error_Handler();
+        break;
+    }
+
+    //temp variable for storing read inputs and later calculating differences via bitwise XOR
+    uint16_t temp_exp_inputs = 0;
+    //reading inputdata from expander that initiated interrupt
+    HALreturn = pca9555_readRegister(&exp[exp_interrupt], PCA9555_CB_INPUTS_PORTS, &temp_exp_inputs);
+    //invert read value, bacause Siemens HMI uses Pull-Ups on all normal inputs and Pull-Downs on all "safety inputs"
+    temp_exp_inputs = ~(temp_exp_inputs);
+    
+    //find out which inputs changed since last interrupt or initial input read
+    temp_exp_inputs = temp_exp_inputs ^ raw_exp_inputdata[exp_data];
+    //update value to detect changed pin(s) in the next interrupt event 
+    raw_exp_inputdata[exp_data] = raw_exp_inputdata[exp_data] ^ temp_exp_inputs;
+
+    //if serial communication is active
+    if(SerialConnected == 1)
+    {
+      //test every bit of the 2 bytes for changed pin(s)
+      for(uint8_t i = 0; i < 16; i++)
       {
-        //look up which input is connected to corresponding expander input pin
-        uint8_t pressed_input = getinput(exp_interrupt, i);
-  
-        //change on encoder?
-        if(pressed_input >= 64 && pressed_input <= 79)
+        //detect a changed pin/bit - note: there could be the possibility, that mor than one input changed
+        //hence all the handling needs to be done in the ISR and can not be done in the main function, a break from the for-loop is also not clever
+        if((temp_exp_inputs >> i) & 0x0001)
         {
-          //update encoder value(s)
-          updateEncoder(pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
-          break;
-        }
-        else
-        {
-          //send state of individual pin via virtual serial port
-          sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+          //look up which input is connected to corresponding expander input pin
+          uint8_t pressed_input = getinput(exp_interrupt, i);
+    
+          //change on encoder?
+          if(pressed_input >= 64 && pressed_input <= 79)
+          {
+            //update encoder value(s)
+            updateandsendEncoder(pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+            break;
+          }
+          else
+          {
+            //send state of individual pin via virtual serial port
+            sendData('I', pressed_input, (raw_exp_inputdata[exp_data] >> i) & 0x0001);
+          }
         }
       }
     }
-  }
 
-  //Error handling
-  if (HALreturn != HAL_OK || exp_data == 255 || exp_interrupt == 255)
-  {
-    Error_Handler();
+    //Error handling
+    if (HALreturn != HAL_OK || exp_data == 255 || exp_interrupt == 255)
+    {
+      Error_Handler();
+    }
   }
 }
 
@@ -769,7 +912,7 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
       {
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, true); //turn on LED
         SerialConnected = 1;                        //set serial status to connected 
-        //sendAllInputStatus();                     //send initial state
+        sendAllInputStatus();                     //send initial state
       }
       LastTickConnected = HAL_GetTick();  //write last Tick to tmp variable for timeout detection
 
@@ -794,6 +937,11 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
       //set output to sent state
       setOutput(pin, state);
     }
+    else if(CMD == 'A' && SerialConnected == 1)
+    {
+        //ADC needed?
+        HAL_ADC_Start_DMA(&hadc, (uint32_t *)rawADCvalues, 2);
+    }
     else
     {
       char sendBuf[20] = "command not found!\n";
@@ -808,17 +956,30 @@ void USB_CDC_RxHandler(uint8_t* Buf, uint32_t Len)
 }
 
 /**
+  * @brief  ISR for finished ADC conversion
+  * @retval None
+  */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+  adc_convCompleted = 1;
+}
+
+/**
   * @brief  send data via serial
   * @retval None
   */
-void sendData(char sig, uint8_t pin, uint8_t state)
+void sendData(char sig, uint8_t pin, uint16_t state)
 {
   //tmp variable to build message
   char sendBuf[12];
   //build message and write that to sendBuf
-  sprintf(sendBuf, "%c%i:%i\n", sig, pin, state);
+  sprintf(sendBuf, "%c%i:%i\r\n", sig, pin, state);
   //transmit message via serial
-  CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+  uint8_t test = CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+  
+  //HAL_Delay(100);
+  //while (&hUsbDeviceFS.pClassData ->TxState != 0);
+
 }
 
 /**
@@ -919,7 +1080,17 @@ uint8_t getinput(uint8_t expander, uint8_t pin)
 }
 
 /**
-  * @brief  updates encoder data for corresponding ENC given via pin
+  * @brief  updates encoder data for corresponding ENC given via pin and sends data via serial
+  * @retval None
+  */
+void updateandsendEncoder(uint8_t pin, uint8_t pin_state)
+{
+  updateEncoder(pin, pin_state);
+  sendEncoder(pin);
+}
+
+/**
+  * @brief  just updates encoder data for corresponding ENC given via pin
   * @retval None
   */
 void updateEncoder(uint8_t pin, uint8_t pin_state)
@@ -932,14 +1103,10 @@ void updateEncoder(uint8_t pin, uint8_t pin_state)
   {
     //set bit to 0
     if(pin_state == 0)
-    {
       enc_gray[1] &= ~(0x01 << (pin - 64));
-    }
     //set bit to 1
     else
-    {
       enc_gray[1] |= (0x01 << (pin - 64));
-    }
     //gray to bin conversion
     enc_pos[1] = greyToBin(enc_gray[1]);
 
@@ -952,12 +1119,12 @@ void updateEncoder(uint8_t pin, uint8_t pin_state)
       enc_retval[1] = (enc_pos[1] - 6)*10;
     else if(enc_pos[1] >= 13 && enc_pos[1] <= 23)
       enc_retval[1] = (enc_pos[1] - 12)*5 + 65;
+    else if(enc_pos[1] >= 24 && enc_pos[1] <= 32)
+      ; //do nothing
     else
-      Error_Handler();
-
-    //send Data - TODO
-    //sendData('L', 1, enc_pos[1]);
-    sendData('R', 1, enc_retval[1]);
+    {
+      //Error_Handler();
+    }
   }
   //state change of ENC2
   else if(pin >= 72 && pin <= 79)
@@ -977,11 +1144,49 @@ void updateEncoder(uint8_t pin, uint8_t pin_state)
 
     //calculation of real position
     enc_retval[0] = enc_pos[0] * 5 + 45;
+  }
 
-    //send Data - TODO
-    //sendData('L', 0, enc_pos[0]);
-    sendData('R', 0, enc_retval[0]);
+  //everything else -> Fault
+  else
+  {
+    return;
+  }
 }
+
+/**
+  * @brief  just sends encoder data via serial, pin determins for which encoder the data needs to be sent
+  * @retval None
+  */
+void sendEncoder(uint8_t pin)
+{
+  char sendBuf[24] = "";
+  char inputtext[12] = "";
+  
+  //both encoders return bits in gray code, these are at first written in gray code to the enc_gray array
+  //then converted to the enc_pos value (the position) and then converted to the real value (enc_retval) printed on the Siemens Interface
+  
+  //state change of ENC1
+  if(pin >= 64 && pin <= 71)
+  {
+    //build message and write that to sendBuf
+    sprintf(sendBuf, "%c%i:%i\r\n", 'L', 1, enc_pos[1]);
+    sprintf(inputtext, "%c%i:%i\r\n", 'R', 1, enc_retval[1]);
+    //append/concatenate old string and new string 
+    strcat(sendBuf, inputtext);
+    //transmit both infos
+    CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+  }
+  //state change of ENC2
+  else if(pin >= 72 && pin <= 79)
+  {
+    //build message and write that to sendBuf
+    sprintf(sendBuf, "%c%i:%i\r\n", 'L', 0, enc_pos[0]);
+    sprintf(inputtext, "%c%i:%i\r\n", 'R', 0, enc_retval[0]);
+    //append/concatenate old string and new string 
+    strcat(sendBuf, inputtext);
+    //transmit both infos
+    CDC_Transmit_FS(sendBuf, strlen(sendBuf));
+  }
   //everything else -> Fault
   else
   {
@@ -1009,26 +1214,17 @@ uint8_t greyToBin(uint8_t n)
   */
 void sendAllInputStatus()
 {
-  //ToDo
   //initial read all inputs
   init_dataregs();
-  
-  //send initial status
+  //string with all set inputs at serial com init state
+  char sendBuf[448] = "";
+  //for building output text
+  char inputtext[40];
+
+  //iterate over all input expanders
   for(uint8_t k = 0; k < number_of_input_exp; k++)
   {
-    //tmp variable to build message
-    char sendBuf[12];
-    //build message and write that to sendBuf
-    sprintf(sendBuf, "%i\n", (int*)raw_exp_inputdata[k]);
-    //transmit message via serial
-
-    uint8_t state = USBD_FAIL;
-    do
-    {
-      state = CDC_Transmit_FS(sendBuf, strlen(sendBuf));
-    }while ((state != USBD_OK));
-
-
+    //iterate over all 16 bits to detect individual high bits
     for(uint8_t i = 0; i < 16; i++)
     {
       //detect a high pin/bit
@@ -1036,22 +1232,31 @@ void sendAllInputStatus()
       {
         //look up which input is connected to corresponding expander input pin
         uint8_t pressed_input = getinput(input_expander[k], i);
-        //send state of the pin via virtual serial port
-        sendData('I', pressed_input, (raw_exp_inputdata[k] >> i) & 0x0001);
+
+        //is encoder?
+        if(pressed_input >= 64 && pressed_input <= 79)
+        {
+          updateEncoder(pressed_input, (raw_exp_inputdata[k] >> i) & 0x0001);
+        }
+        //it's not an encoder
+        else
+        {
+          //build message and write that to inputtext
+          sprintf(inputtext, "%c%i:%i\r\n", 'I', pressed_input, (raw_exp_inputdata[k] >> i) & 0x0001);
+          //append/concatenate old string and new string 
+          strcat(sendBuf, inputtext);
+        }
       }
     }
   }
-}
+  //build first message and write that to inputtext
+  sprintf(inputtext, "%c%i:%i\r\n%c%i:%i\r\n%c%i:%i\r\n%c%i:%i\r\n", 'L', 0, enc_pos[0], 'R', 0, enc_retval[0], 'L', 1, enc_pos[1], 'R', 1, enc_retval[1]);
+  //append/concatenate old string and new string 
+  strcat(sendBuf, inputtext);
 
-/**
-  * @brief  Reads the ADC values
-  * @retval None
-  */
-void readADC()
-{
-  ;//ToDo
+  //send all inputstates
+  CDC_Transmit_FS(sendBuf, strlen(sendBuf));
 }
-
 
 /* USER CODE END 4 */
 

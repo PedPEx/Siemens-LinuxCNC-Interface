@@ -94,7 +94,7 @@ uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
-
+uint8_t temp[7];
 /* USER CODE END PRIVATE_VARIABLES */
 
 /**
@@ -218,11 +218,23 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
   /* 6      | bDataBits  |   1   | Number Data bits (5, 6, 7, 8 or 16).          */
   /*******************************************************************************/
     case CDC_SET_LINE_CODING:
-
+      temp[0] = pbuf[0];
+      temp[1] = pbuf[1];
+      temp[2] = pbuf[2];
+      temp[3] = pbuf[3];
+      temp[4] = pbuf[4];
+      temp[5] = pbuf[5];
+      temp[6] = pbuf[6];
     break;
 
     case CDC_GET_LINE_CODING:
-
+      pbuf[0] = temp[0];
+      pbuf[1] = temp[1];
+      pbuf[2] = temp[2];
+      pbuf[3] = temp[3];
+      pbuf[4] = temp[4];
+      pbuf[5] = temp[5];
+      pbuf[6] = temp[6];
     break;
 
     case CDC_SET_CONTROL_LINE_STATE:
@@ -283,11 +295,19 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */
   USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
+   
   if (hcdc->TxState != 0){
     return USBD_BUSY;
   }
+   
+  //while (hcdc->TxState != 0);
+  
   USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
   result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+
+  //USB_FlushTxFifo(&hUsbDeviceFS, 0x10U);
+  //USB_FlushTxFifo(&hcdc->Instance, 0x10U);
+
   /* USER CODE END 7 */
   return result;
 }
