@@ -4500,7 +4500,7 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
                 0x08000000                g_pfnVectors
                 0x0800013c                        . = ALIGN (0x4)
 
-.text           0x0800013c     0xc124
+.text           0x0800013c     0xc230
                 0x0800013c                        . = ALIGN (0x4)
  *(.text)
  .text          0x0800013c       0x40 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
@@ -5089,341 +5089,341 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .text.MX_GPIO_Init
                 0x08009d8c       0xe4 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
  .text.serial_com_Handler
-                0x08009e70      0x16c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x08009e70      0x280 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
                 0x08009e70                serial_com_Handler
  .text.read_changed_Input
-                0x08009fdc      0x18c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x08009fdc                read_changed_Input
+                0x0800a0f0      0x18c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a0f0                read_changed_Input
  .text.init_dataregs
-                0x0800a168       0x64 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a168                init_dataregs
+                0x0800a27c       0x64 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a27c                init_dataregs
  .text.init_ExpOutputs
-                0x0800a1cc       0xd0 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a1cc                init_ExpOutputs
+                0x0800a2e0       0xd0 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a2e0                init_ExpOutputs
  .text.init_expanders
-                0x0800a29c      0x1e0 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a29c                init_expanders
+                0x0800a3b0      0x1e0 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a3b0                init_expanders
  .text.HAL_GPIO_EXTI_Callback
-                0x0800a47c      0x184 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a47c                HAL_GPIO_EXTI_Callback
+                0x0800a590      0x17c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a590                HAL_GPIO_EXTI_Callback
  .text.USB_CDC_RxHandler
-                0x0800a600      0x184 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a600                USB_CDC_RxHandler
+                0x0800a70c      0x184 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a70c                USB_CDC_RxHandler
  .text.HAL_ADC_ConvCpltCallback
-                0x0800a784       0x1c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a784                HAL_ADC_ConvCpltCallback
+                0x0800a890       0x1c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a890                HAL_ADC_ConvCpltCallback
  .text.sendData
-                0x0800a7a0       0x50 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a7a0                sendData
+                0x0800a8ac       0x50 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a8ac                sendData
  .text.setOutput
-                0x0800a7f0       0xac CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a7f0                setOutput
+                0x0800a8fc       0xac CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a8fc                setOutput
  .text.getinput
-                0x0800a89c       0x94 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a89c                getinput
+                0x0800a9a8       0x94 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800a9a8                getinput
  .text.updateandsendEncoder
-                0x0800a930       0x2c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a930                updateandsendEncoder
+                0x0800aa3c       0x2c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800aa3c                updateandsendEncoder
  .text.updateEncoder
-                0x0800a95c      0x19c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800a95c                updateEncoder
+                0x0800aa68      0x19c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800aa68                updateEncoder
  .text.sendEncoder
-                0x0800aaf8      0x100 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800aaf8                sendEncoder
+                0x0800ac04      0x100 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800ac04                sendEncoder
  .text.greyToBin
-                0x0800abf8       0x30 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800abf8                greyToBin
+                0x0800ad04       0x30 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800ad04                greyToBin
  .text.sendAllInputStatus
-                0x0800ac28      0x190 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800ac28                sendAllInputStatus
+                0x0800ad34      0x190 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800ad34                sendAllInputStatus
  .text.Error_Handler
-                0x0800adb8        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
-                0x0800adb8                Error_Handler
+                0x0800aec4        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800aec4                Error_Handler
  .text.NMI_Handler
-                0x0800adc4        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800adc4                NMI_Handler
+                0x0800aed0        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aed0                NMI_Handler
  .text.HardFault_Handler
-                0x0800adcc        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800adcc                HardFault_Handler
+                0x0800aed8        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aed8                HardFault_Handler
  .text.MemManage_Handler
-                0x0800add4        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800add4                MemManage_Handler
+                0x0800aee0        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aee0                MemManage_Handler
  .text.BusFault_Handler
-                0x0800addc        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800addc                BusFault_Handler
+                0x0800aee8        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aee8                BusFault_Handler
  .text.UsageFault_Handler
-                0x0800ade4        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ade4                UsageFault_Handler
+                0x0800aef0        0x8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aef0                UsageFault_Handler
  .text.SVC_Handler
-                0x0800adec        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800adec                SVC_Handler
+                0x0800aef8        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800aef8                SVC_Handler
  .text.DebugMon_Handler
-                0x0800adf8        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800adf8                DebugMon_Handler
+                0x0800af04        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af04                DebugMon_Handler
  .text.PendSV_Handler
-                0x0800ae04        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae04                PendSV_Handler
+                0x0800af10        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af10                PendSV_Handler
  .text.SysTick_Handler
-                0x0800ae10        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae10                SysTick_Handler
+                0x0800af1c        0xc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af1c                SysTick_Handler
  .text.EXTI4_IRQHandler
-                0x0800ae1c        0xe CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae1c                EXTI4_IRQHandler
- *fill*         0x0800ae2a        0x2 
+                0x0800af28        0xe CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af28                EXTI4_IRQHandler
+ *fill*         0x0800af36        0x2 
  .text.DMA1_Channel1_IRQHandler
-                0x0800ae2c       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae2c                DMA1_Channel1_IRQHandler
+                0x0800af38       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af38                DMA1_Channel1_IRQHandler
  .text.ADC1_IRQHandler
-                0x0800ae40       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae40                ADC1_IRQHandler
+                0x0800af4c       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af4c                ADC1_IRQHandler
  .text.USB_LP_IRQHandler
-                0x0800ae54       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae54                USB_LP_IRQHandler
+                0x0800af60       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af60                USB_LP_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x0800ae68       0x1e CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae68                EXTI9_5_IRQHandler
- *fill*         0x0800ae86        0x2 
+                0x0800af74       0x1e CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af74                EXTI9_5_IRQHandler
+ *fill*         0x0800af92        0x2 
  .text.TIM3_IRQHandler
-                0x0800ae88       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae88                TIM3_IRQHandler
+                0x0800af94       0x14 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800af94                TIM3_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x0800ae9c       0x28 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
-                0x0800ae9c                EXTI15_10_IRQHandler
+                0x0800afa8       0x28 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+                0x0800afa8                EXTI15_10_IRQHandler
  .text.HAL_MspInit
-                0x0800aec4       0x5c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
-                0x0800aec4                HAL_MspInit
+                0x0800afd0       0x5c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+                0x0800afd0                HAL_MspInit
  .text.HAL_ADC_MspInit
-                0x0800af20       0xe8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
-                0x0800af20                HAL_ADC_MspInit
+                0x0800b02c       0xe8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+                0x0800b02c                HAL_ADC_MspInit
  .text.HAL_I2C_MspInit
-                0x0800b008       0xe8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
-                0x0800b008                HAL_I2C_MspInit
+                0x0800b114       0xe8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+                0x0800b114                HAL_I2C_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x0800b0f0       0x4c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
-                0x0800b0f0                HAL_TIM_Base_MspInit
- .text._sbrk    0x0800b13c       0x6c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
-                0x0800b13c                _sbrk
+                0x0800b1fc       0x4c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+                0x0800b1fc                HAL_TIM_Base_MspInit
+ .text._sbrk    0x0800b248       0x6c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
+                0x0800b248                _sbrk
  .text.Reset_Handler
-                0x0800b1a8       0x48 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
-                0x0800b1a8                Reset_Handler
+                0x0800b2b4       0x48 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
+                0x0800b2b4                Reset_Handler
  .text.Default_Handler
-                0x0800b1f0        0x2 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
-                0x0800b1f0                RTC_Alarm_IRQHandler
-                0x0800b1f0                EXTI2_IRQHandler
-                0x0800b1f0                COMP_ACQ_IRQHandler
-                0x0800b1f0                TIM10_IRQHandler
-                0x0800b1f0                USB_HP_IRQHandler
-                0x0800b1f0                TIM6_IRQHandler
-                0x0800b1f0                PVD_IRQHandler
-                0x0800b1f0                EXTI3_IRQHandler
-                0x0800b1f0                EXTI0_IRQHandler
-                0x0800b1f0                I2C2_EV_IRQHandler
-                0x0800b1f0                SPI1_IRQHandler
-                0x0800b1f0                USB_FS_WKUP_IRQHandler
-                0x0800b1f0                DMA2_Channel2_IRQHandler
-                0x0800b1f0                DMA1_Channel4_IRQHandler
-                0x0800b1f0                USART3_IRQHandler
-                0x0800b1f0                DMA1_Channel7_IRQHandler
-                0x0800b1f0                TIM4_IRQHandler
-                0x0800b1f0                DMA2_Channel1_IRQHandler
-                0x0800b1f0                I2C1_EV_IRQHandler
-                0x0800b1f0                DMA1_Channel6_IRQHandler
-                0x0800b1f0                DMA2_Channel4_IRQHandler
-                0x0800b1f0                RCC_IRQHandler
-                0x0800b1f0                Default_Handler
-                0x0800b1f0                TIM7_IRQHandler
-                0x0800b1f0                TIM5_IRQHandler
-                0x0800b1f0                TIM9_IRQHandler
-                0x0800b1f0                TAMPER_STAMP_IRQHandler
-                0x0800b1f0                RTC_WKUP_IRQHandler
-                0x0800b1f0                SPI2_IRQHandler
-                0x0800b1f0                DMA2_Channel5_IRQHandler
-                0x0800b1f0                DMA1_Channel5_IRQHandler
-                0x0800b1f0                DMA1_Channel3_IRQHandler
-                0x0800b1f0                COMP_IRQHandler
-                0x0800b1f0                WWDG_IRQHandler
-                0x0800b1f0                TIM2_IRQHandler
-                0x0800b1f0                DAC_IRQHandler
-                0x0800b1f0                EXTI1_IRQHandler
-                0x0800b1f0                TIM11_IRQHandler
-                0x0800b1f0                USART2_IRQHandler
-                0x0800b1f0                I2C2_ER_IRQHandler
-                0x0800b1f0                DMA1_Channel2_IRQHandler
-                0x0800b1f0                FLASH_IRQHandler
-                0x0800b1f0                USART1_IRQHandler
-                0x0800b1f0                SPI3_IRQHandler
-                0x0800b1f0                I2C1_ER_IRQHandler
-                0x0800b1f0                DMA2_Channel3_IRQHandler
- *fill*         0x0800b1f2        0x2 
- .text.sprintf  0x0800b1f4       0x40 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
-                0x0800b1f4                siprintf
-                0x0800b1f4                sprintf
- .text.sscanf   0x0800b234       0x54 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
-                0x0800b234                siscanf
-                0x0800b234                sscanf
- .text.strcat   0x0800b288       0x1e C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
-                0x0800b288                strcat
- *fill*         0x0800b2a6        0x2 
- .text.__errno  0x0800b2a8        0xc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
-                0x0800b2a8                __errno
+                0x0800b2fc        0x2 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
+                0x0800b2fc                RTC_Alarm_IRQHandler
+                0x0800b2fc                EXTI2_IRQHandler
+                0x0800b2fc                COMP_ACQ_IRQHandler
+                0x0800b2fc                TIM10_IRQHandler
+                0x0800b2fc                USB_HP_IRQHandler
+                0x0800b2fc                TIM6_IRQHandler
+                0x0800b2fc                PVD_IRQHandler
+                0x0800b2fc                EXTI3_IRQHandler
+                0x0800b2fc                EXTI0_IRQHandler
+                0x0800b2fc                I2C2_EV_IRQHandler
+                0x0800b2fc                SPI1_IRQHandler
+                0x0800b2fc                USB_FS_WKUP_IRQHandler
+                0x0800b2fc                DMA2_Channel2_IRQHandler
+                0x0800b2fc                DMA1_Channel4_IRQHandler
+                0x0800b2fc                USART3_IRQHandler
+                0x0800b2fc                DMA1_Channel7_IRQHandler
+                0x0800b2fc                TIM4_IRQHandler
+                0x0800b2fc                DMA2_Channel1_IRQHandler
+                0x0800b2fc                I2C1_EV_IRQHandler
+                0x0800b2fc                DMA1_Channel6_IRQHandler
+                0x0800b2fc                DMA2_Channel4_IRQHandler
+                0x0800b2fc                RCC_IRQHandler
+                0x0800b2fc                Default_Handler
+                0x0800b2fc                TIM7_IRQHandler
+                0x0800b2fc                TIM5_IRQHandler
+                0x0800b2fc                TIM9_IRQHandler
+                0x0800b2fc                TAMPER_STAMP_IRQHandler
+                0x0800b2fc                RTC_WKUP_IRQHandler
+                0x0800b2fc                SPI2_IRQHandler
+                0x0800b2fc                DMA2_Channel5_IRQHandler
+                0x0800b2fc                DMA1_Channel5_IRQHandler
+                0x0800b2fc                DMA1_Channel3_IRQHandler
+                0x0800b2fc                COMP_IRQHandler
+                0x0800b2fc                WWDG_IRQHandler
+                0x0800b2fc                TIM2_IRQHandler
+                0x0800b2fc                DAC_IRQHandler
+                0x0800b2fc                EXTI1_IRQHandler
+                0x0800b2fc                TIM11_IRQHandler
+                0x0800b2fc                USART2_IRQHandler
+                0x0800b2fc                I2C2_ER_IRQHandler
+                0x0800b2fc                DMA1_Channel2_IRQHandler
+                0x0800b2fc                FLASH_IRQHandler
+                0x0800b2fc                USART1_IRQHandler
+                0x0800b2fc                SPI3_IRQHandler
+                0x0800b2fc                I2C1_ER_IRQHandler
+                0x0800b2fc                DMA2_Channel3_IRQHandler
+ *fill*         0x0800b2fe        0x2 
+ .text.sprintf  0x0800b300       0x40 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
+                0x0800b300                siprintf
+                0x0800b300                sprintf
+ .text.sscanf   0x0800b340       0x54 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
+                0x0800b340                siscanf
+                0x0800b340                sscanf
+ .text.strcat   0x0800b394       0x1e C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
+                0x0800b394                strcat
+ *fill*         0x0800b3b2        0x2 
+ .text.__errno  0x0800b3b4        0xc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
+                0x0800b3b4                __errno
  .text.__ssputs_r
-                0x0800b2b4       0xb6 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
-                0x0800b2b4                __ssputs_r
- *fill*         0x0800b36a        0x2 
+                0x0800b3c0       0xb6 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x0800b3c0                __ssputs_r
+ *fill*         0x0800b476        0x2 
  .text._svfprintf_r
-                0x0800b36c      0x1f8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
-                0x0800b36c                _svfiprintf_r
-                0x0800b36c                _svfprintf_r
+                0x0800b478      0x1f8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x0800b478                _svfiprintf_r
+                0x0800b478                _svfprintf_r
  .text._sungetc_r
-                0x0800b564       0x76 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
-                0x0800b564                _sungetc_r
+                0x0800b670       0x76 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+                0x0800b670                _sungetc_r
  .text.__ssrefill_r
-                0x0800b5da       0x3a C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
-                0x0800b5da                __ssrefill_r
+                0x0800b6e6       0x3a C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+                0x0800b6e6                __ssrefill_r
  .text.__ssvfscanf_r
-                0x0800b614      0x2e4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
-                0x0800b614                __ssvfiscanf_r
-                0x0800b614                __ssvfscanf_r
+                0x0800b720      0x2e4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+                0x0800b720                __ssvfiscanf_r
+                0x0800b720                __ssvfscanf_r
  .text._printf_common
-                0x0800b8f8       0xe4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800b8f8                _printf_common
+                0x0800ba04       0xe4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800ba04                _printf_common
  .text._printf_i
-                0x0800b9dc      0x240 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800b9dc                _printf_i
+                0x0800bae8      0x240 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800bae8                _printf_i
  .text._scanf_chars
-                0x0800bc1c       0xb4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
-                0x0800bc1c                _scanf_chars
+                0x0800bd28       0xb4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0800bd28                _scanf_chars
  .text._scanf_i
-                0x0800bcd0      0x1e4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
-                0x0800bcd0                _scanf_i
- .text.__sccl   0x0800beb4       0x72 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
-                0x0800beb4                __sccl
+                0x0800bddc      0x1e4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0800bddc                _scanf_i
+ .text.__sccl   0x0800bfc0       0x72 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
+                0x0800bfc0                __sccl
  .text.__submore
-                0x0800bf26       0x70 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
-                0x0800bf26                __submore
- .text.memmove  0x0800bf96       0x34 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
-                0x0800bf96                memmove
- .text.memchr   0x0800bfca       0x1c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
-                0x0800bfca                memchr
- .text.memcpy   0x0800bfe6       0x1c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
-                0x0800bfe6                memcpy
+                0x0800c032       0x70 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
+                0x0800c032                __submore
+ .text.memmove  0x0800c0a2       0x34 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
+                0x0800c0a2                memmove
+ .text.memchr   0x0800c0d6       0x1c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
+                0x0800c0d6                memchr
+ .text.memcpy   0x0800c0f2       0x1c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
+                0x0800c0f2                memcpy
  .text._realloc_r
-                0x0800c002       0x5c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
-                0x0800c002                _realloc_r
- *fill*         0x0800c05e        0x2 
+                0x0800c10e       0x5c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
+                0x0800c10e                _realloc_r
+ *fill*         0x0800c16a        0x2 
  .text._strtol_l.constprop.0
-                0x0800c060       0xf4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
+                0x0800c16c       0xf4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
  .text._strtol_r
-                0x0800c154        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
-                0x0800c154                _strtol_r
+                0x0800c260        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
+                0x0800c260                _strtol_r
  .text._strtoul_l.constprop.0
-                0x0800c158       0xdc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
+                0x0800c264       0xdc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
  .text._strtoul_r
-                0x0800c234        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
-                0x0800c234                _strtoul_r
+                0x0800c340        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
+                0x0800c340                _strtoul_r
  .text._malloc_usable_size_r
-                0x0800c238       0x10 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
-                0x0800c238                _malloc_usable_size_r
+                0x0800c344       0x10 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
+                0x0800c344                _malloc_usable_size_r
  *(.glue_7)
- .glue_7        0x0800c248        0x0 linker stubs
+ .glue_7        0x0800c354        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800c248        0x0 linker stubs
+ .glue_7t       0x0800c354        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800c248        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x0800c354        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x0800c248        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crti.o
-                0x0800c248                _init
- .init          0x0800c24c        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtn.o
+ .init          0x0800c354        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crti.o
+                0x0800c354                _init
+ .init          0x0800c358        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x0800c254        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crti.o
-                0x0800c254                _fini
- .fini          0x0800c258        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtn.o
-                0x0800c260                        . = ALIGN (0x4)
-                0x0800c260                        _etext = .
+ .fini          0x0800c360        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crti.o
+                0x0800c360                _fini
+ .fini          0x0800c364        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtn.o
+                0x0800c36c                        . = ALIGN (0x4)
+                0x0800c36c                        _etext = .
 
-.vfp11_veneer   0x0800c260        0x0
- .vfp11_veneer  0x0800c260        0x0 linker stubs
+.vfp11_veneer   0x0800c36c        0x0
+ .vfp11_veneer  0x0800c36c        0x0 linker stubs
 
-.v4_bx          0x0800c260        0x0
- .v4_bx         0x0800c260        0x0 linker stubs
+.v4_bx          0x0800c36c        0x0
+ .v4_bx         0x0800c36c        0x0 linker stubs
 
-.iplt           0x0800c260        0x0
- .iplt          0x0800c260        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x0800c36c        0x0
+ .iplt          0x0800c36c        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x0800c260      0x344
-                0x0800c260                        . = ALIGN (0x4)
+.rodata         0x0800c36c      0x344
+                0x0800c36c                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0800c260       0x46 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj
- *fill*         0x0800c2a6        0x2 
- .rodata        0x0800c2a8       0xb9 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
- *fill*         0x0800c361        0x3 
- .rodata        0x0800c364        0xc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+ .rodata        0x0800c36c       0x46 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj
+ *fill*         0x0800c3b2        0x2 
+ .rodata        0x0800c3b4       0xb9 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+ *fill*         0x0800c46d        0x3 
+ .rodata        0x0800c470        0xc C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
  *(.rodata*)
  .rodata.PLLMulTable
-                0x0800c370        0x9 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
-                0x0800c370                PLLMulTable
- *fill*         0x0800c379        0x3 
+                0x0800c47c        0x9 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
+                0x0800c47c                PLLMulTable
+ *fill*         0x0800c485        0x3 
  .rodata.AHBPrescTable
-                0x0800c37c       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
-                0x0800c37c                AHBPrescTable
+                0x0800c488       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
+                0x0800c488                AHBPrescTable
  .rodata.APBPrescTable
-                0x0800c38c        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
-                0x0800c38c                APBPrescTable
+                0x0800c498        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
+                0x0800c498                APBPrescTable
  .rodata.outputs.1
-                0x0800c394       0x40 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800c4a0       0x40 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
  .rodata.inputs.0
-                0x0800c3d4       0x80 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+                0x0800c4e0       0x80 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
  .rodata._svfprintf_r.str1.1
-                0x0800c454       0x11 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x0800c560       0x11 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
  .rodata.__ssvfscanf_r.str1.1
-                0x0800c465        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+                0x0800c571        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
  .rodata._printf_i.str1.1
-                0x0800c465       0x22 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800c571       0x22 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
  .rodata._scanf_i.str1.1
-                0x0800c487       0x12 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0800c593       0x12 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata.str1.1
-                0x0800c499        0x9 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+                0x0800c5a5        0x9 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
  .rodata._ctype_
-                0x0800c4a2      0x101 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
-                0x0800c4a2                _ctype_
-                0x0800c5a4                        . = ALIGN (0x4)
- *fill*         0x0800c5a3        0x1 
+                0x0800c5ae      0x101 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
+                0x0800c5ae                _ctype_
+                0x0800c6b0                        . = ALIGN (0x4)
+ *fill*         0x0800c6af        0x1 
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0800c5a4        0x8
-                0x0800c5a4                        __exidx_start = .
+.ARM            0x0800c6b0        0x8
+                0x0800c6b0                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0800c5a4        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
- .ARM.exidx     0x0800c5ac        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x0800c6b0        0x8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0800c6b8        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
-                0x0800c5ac                        __exidx_end = .
+                0x0800c6b8                        __exidx_end = .
 
-.rel.dyn        0x0800c5ac        0x0
- .rel.iplt      0x0800c5ac        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x0800c6b8        0x0
+ .rel.iplt      0x0800c6b8        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
 
-.preinit_array  0x0800c5ac        0x0
-                0x0800c5ac                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800c6b8        0x0
+                0x0800c6b8                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800c5ac                        PROVIDE (__preinit_array_end = .)
+                0x0800c6b8                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0800c5ac        0x4
-                0x0800c5ac                        PROVIDE (__init_array_start = .)
+.init_array     0x0800c6b8        0x4
+                0x0800c6b8                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800c5ac        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
-                0x0800c5b0                        PROVIDE (__init_array_end = .)
+ .init_array    0x0800c6b8        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
+                0x0800c6bc                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x0800c5b0        0x4
+.fini_array     0x0800c6bc        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0800c5b0        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
+ .fini_array    0x0800c6bc        0x4 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0800c5b4                        _sidata = LOADADDR (.data)
+                0x0800c6c0                        _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x1d8 load address 0x0800c5b4
+.data           0x20000000      0x1d8 load address 0x0800c6c0
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -5488,11 +5488,11 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  *fill*         0x200001d5        0x3 
                 0x200001d8                        _edata = .
 
-.igot.plt       0x200001d8        0x0 load address 0x0800c78c
+.igot.plt       0x200001d8        0x0 load address 0x0800c898
  .igot.plt      0x200001d8        0x0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp/crtbegin.o
                 0x200001d8                        . = ALIGN (0x4)
 
-.bss            0x200001d8     0x1700 load address 0x0800c78c
+.bss            0x200001d8     0x1700 load address 0x0800c898
                 0x200001d8                        _sbss = .
                 0x200001d8                        __bss_start__ = _sbss
  *(.bss)
@@ -5600,7 +5600,7 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
                 0x200018d8                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200018d8      0x600 load address 0x0800c78c
+                0x200018d8      0x600 load address 0x0800c898
                 0x200018d8                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
                 0x200018d8                        PROVIDE (_end = .)
@@ -5750,7 +5750,7 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
 LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_frame    0x00000000     0x5c08
+.debug_frame    0x00000000     0x5c14
  .debug_frame   0x00000000      0x144 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(libc_a-findfp.o)
  .debug_frame   0x00000144       0x88 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(libc_a-stdio.o)
  .debug_frame   0x000001cc       0x20 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(libc_a-memset.o)
@@ -5783,31 +5783,31 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .debug_frame   0x00004c84       0x2c CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usb_device.c.obj
  .debug_frame   0x00004cb0      0x160 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj
  .debug_frame   0x00004e10       0xbc CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_cdc_if.c.obj
- .debug_frame   0x00004ecc      0x4b0 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
- .debug_frame   0x0000537c      0x1c8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
- .debug_frame   0x00005544      0x110 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
- .debug_frame   0x00005654       0x34 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
- .debug_frame   0x00005688       0x2c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x000056b4       0x34 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x000056e8       0x6c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
- .debug_frame   0x00005754       0x80 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
- .debug_frame   0x000057d4       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
- .debug_frame   0x000057fc       0x20 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
- .debug_frame   0x0000581c       0x90 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
- .debug_frame   0x000058ac       0x74 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
- .debug_frame   0x00005920       0x60 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_frame   0x00005980       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
- .debug_frame   0x000059e4       0x2c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
- .debug_frame   0x00005a10       0x5c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
- .debug_frame   0x00005a6c       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
- .debug_frame   0x00005a94       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
- .debug_frame   0x00005abc       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_frame   0x00005ae4       0x3c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
- .debug_frame   0x00005b20       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
- .debug_frame   0x00005b84       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
- .debug_frame   0x00005be8       0x20 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
+ .debug_frame   0x00004ecc      0x4bc CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+ .debug_frame   0x00005388      0x1c8 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+ .debug_frame   0x00005550      0x110 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+ .debug_frame   0x00005660       0x34 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
+ .debug_frame   0x00005694       0x2c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x000056c0       0x34 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7-m/nofp\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000056f4       0x6c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
+ .debug_frame   0x00005760       0x80 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
+ .debug_frame   0x000057e0       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
+ .debug_frame   0x00005808       0x20 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
+ .debug_frame   0x00005828       0x90 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+ .debug_frame   0x000058b8       0x74 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+ .debug_frame   0x0000592c       0x60 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_frame   0x0000598c       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+ .debug_frame   0x000059f0       0x2c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
+ .debug_frame   0x00005a1c       0x5c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
+ .debug_frame   0x00005a78       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
+ .debug_frame   0x00005aa0       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
+ .debug_frame   0x00005ac8       0x28 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x00005af0       0x3c C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
+ .debug_frame   0x00005b2c       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
+ .debug_frame   0x00005b90       0x64 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
+ .debug_frame   0x00005bf4       0x20 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
 
-.debug_info     0x00000000    0x1f0bc
+.debug_info     0x00000000    0x1f121
  .debug_info    0x00000000      0x27c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
  .debug_info    0x0000027c     0x165c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pcd.c.obj
  .debug_info    0x000018d8      0x6a9 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pcd_ex.c.obj
@@ -5830,30 +5830,30 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .debug_info    0x00010b7f      0x63f CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usb_device.c.obj
  .debug_info    0x000111be      0x44a CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj
  .debug_info    0x00011608      0x859 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_cdc_if.c.obj
- .debug_info    0x00011e61     0x22c3 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
- .debug_info    0x00014124      0xea6 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
- .debug_info    0x00014fca     0x11a2 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
- .debug_info    0x0001616c      0x168 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
- .debug_info    0x000162d4       0x30 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
- .debug_info    0x00016304      0x87f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
- .debug_info    0x00016b83      0x8ea C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
- .debug_info    0x0001746d       0xe1 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
- .debug_info    0x0001754e      0x6fb C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
- .debug_info    0x00017c49       0x31 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
- .debug_info    0x00017c7a     0x10c7 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
- .debug_info    0x00018d41      0xf02 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
- .debug_info    0x00019c43      0xde2 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_info    0x0001aa25      0xdc0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
- .debug_info    0x0001b7e5      0x10e C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
- .debug_info    0x0001b8f3      0x98d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
- .debug_info    0x0001c280      0x10f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
- .debug_info    0x0001c38f      0x110 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
- .debug_info    0x0001c49f      0x121 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_info    0x0001c5c0      0x8c7 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
- .debug_info    0x0001ce87      0xd3d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
- .debug_info    0x0001dbc4      0xcab C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
- .debug_info    0x0001e86f       0xb9 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
- .debug_info    0x0001e928      0x794 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
+ .debug_info    0x00011e61     0x2328 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+ .debug_info    0x00014189      0xea6 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+ .debug_info    0x0001502f     0x11a2 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+ .debug_info    0x000161d1      0x168 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
+ .debug_info    0x00016339       0x30 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
+ .debug_info    0x00016369      0x87f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
+ .debug_info    0x00016be8      0x8ea C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
+ .debug_info    0x000174d2       0xe1 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
+ .debug_info    0x000175b3      0x6fb C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
+ .debug_info    0x00017cae       0x31 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
+ .debug_info    0x00017cdf     0x10c7 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+ .debug_info    0x00018da6      0xf02 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+ .debug_info    0x00019ca8      0xde2 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_info    0x0001aa8a      0xdc0 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+ .debug_info    0x0001b84a      0x10e C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
+ .debug_info    0x0001b958      0x98d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
+ .debug_info    0x0001c2e5      0x10f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
+ .debug_info    0x0001c3f4      0x110 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
+ .debug_info    0x0001c504      0x121 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
+ .debug_info    0x0001c625      0x8c7 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
+ .debug_info    0x0001ceec      0xd3d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
+ .debug_info    0x0001dc29      0xcab C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
+ .debug_info    0x0001e8d4       0xb9 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
+ .debug_info    0x0001e98d      0x794 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
 
 .debug_abbrev   0x00000000     0x5b38
  .debug_abbrev  0x00000000      0x11c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
@@ -6199,7 +6199,7 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .debug_macro   0x000198d3       0x10 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
  .debug_macro   0x000198e3      0x23c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
 
-.debug_line     0x00000000    0x1f042
+.debug_line     0x00000000    0x1f11d
  .debug_line    0x00000000      0x92c cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj
  .debug_line    0x0000092c     0x14aa cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pcd.c.obj
  .debug_line    0x00001dd6      0x905 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_pcd_ex.c.obj
@@ -6222,30 +6222,30 @@ LOAD C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .debug_line    0x000159bf      0xbd5 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usb_device.c.obj
  .debug_line    0x00016594      0xc34 CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_desc.c.obj
  .debug_line    0x000171c8      0xc6d CMakeFiles/Siemens_LinuxCNC_Interface.dir/USB_DEVICE/App/usbd_cdc_if.c.obj
- .debug_line    0x00017e35     0x191c CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
- .debug_line    0x00019751      0x9fb CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
- .debug_line    0x0001a14c      0x9b6 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
- .debug_line    0x0001ab02      0x387 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
- .debug_line    0x0001ae89       0x79 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
- .debug_line    0x0001af02      0x2ba C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
- .debug_line    0x0001b1bc      0x2d8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
- .debug_line    0x0001b494      0x125 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
- .debug_line    0x0001b5b9      0x185 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
- .debug_line    0x0001b73e       0x4f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
- .debug_line    0x0001b78d      0x8ac C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
- .debug_line    0x0001c039      0x7b1 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
- .debug_line    0x0001c7ea      0x771 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_line    0x0001cf5b      0x6fa C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
- .debug_line    0x0001d655      0x1d2 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
- .debug_line    0x0001d827      0x46a C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
- .debug_line    0x0001dc91      0x1bb C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
- .debug_line    0x0001de4c      0x1fe C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
- .debug_line    0x0001e04a      0x207 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
- .debug_line    0x0001e251      0x276 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
- .debug_line    0x0001e4c7      0x46d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
- .debug_line    0x0001e934      0x433 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
- .debug_line    0x0001ed67       0xd6 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
- .debug_line    0x0001ee3d      0x205 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
+ .debug_line    0x00017e35     0x19f7 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/main.c.obj
+ .debug_line    0x0001982c      0x9fb CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_it.c.obj
+ .debug_line    0x0001a227      0x9b6 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/stm32l1xx_hal_msp.c.obj
+ .debug_line    0x0001abdd      0x387 CMakeFiles/Siemens_LinuxCNC_Interface.dir/Core/Src/sysmem.c.obj
+ .debug_line    0x0001af64       0x79 CMakeFiles/Siemens_LinuxCNC_Interface.dir/startup_stm32l151xc.s.obj
+ .debug_line    0x0001afdd      0x2ba C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
+ .debug_line    0x0001b297      0x2d8 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sscanf.o)
+ .debug_line    0x0001b56f      0x125 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strcat.o)
+ .debug_line    0x0001b694      0x185 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-errno.o)
+ .debug_line    0x0001b819       0x4f C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strlen.o)
+ .debug_line    0x0001b868      0x8ac C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+ .debug_line    0x0001c114      0x7b1 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfscanf.o)
+ .debug_line    0x0001c8c5      0x771 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_line    0x0001d036      0x6fa C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfscanf_i.o)
+ .debug_line    0x0001d730      0x1d2 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sccl.o)
+ .debug_line    0x0001d902      0x46a C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ungetc.o)
+ .debug_line    0x0001dd6c      0x1bb C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
+ .debug_line    0x0001df27      0x1fe C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
+ .debug_line    0x0001e125      0x207 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
+ .debug_line    0x0001e32c      0x276 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
+ .debug_line    0x0001e5a2      0x46d C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtol.o)
+ .debug_line    0x0001ea0f      0x433 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-strtoul.o)
+ .debug_line    0x0001ee42       0xd6 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-ctype_.o)
+ .debug_line    0x0001ef18      0x205 C:/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
 
 .debug_str      0x00000000    0x96f27
  .debug_str     0x00000000    0x8a2f5 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32l1xx.c.obj

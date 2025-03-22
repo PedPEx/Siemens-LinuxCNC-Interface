@@ -477,9 +477,38 @@ void serial_com_Handler()
     //wait for connection
     while(SerialConnected == 0)
     {
-      CDC_Transmit_FS("E0:0\n", 5);
-      HAL_Delay(200);
+      for(uint8_t i = 0; i <= 52 && SerialConnected == 0; i++)
+      {
+        if(i == 0)
+        {
+          setOutput(i, 1);
+          setOutput(51, 0);
+        }
+        else if(i == 12 || i == 31 || i == 45 || i == 47)
+        {
+          setOutput(i-1, 0);
+        }
+        else if(i == 13 || i == 32 || i == 46 || i == 48)
+        {
+          setOutput(i, 1);
+          setOutput(i-2, 0);
+        }
+        else if(i == 52)
+        {
+          init_ExpOutputs();
+          break;
+        }
+        else
+        {
+          setOutput(i, 1);
+          setOutput(i-1, 0);
+        }
+
+        CDC_Transmit_FS("E0:0\n", 5);
+        HAL_Delay(200);  
+      }
     }
+
   }
 
   //new ADC values?
@@ -528,8 +557,22 @@ void serial_com_Handler()
   //if connection status is connection lost => blink LED 2x per second 
   while(SerialConnected == 2)
   {
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
-    HAL_Delay(250);
+    for(uint8_t k = 0; k <= 1 && SerialConnected == 2; k++)
+    {
+      for(uint8_t i = 0; i <= 51 && SerialConnected == 2; i++)
+      {
+        if(i == 12 || i == 31 || i == 45 || i == 47)
+        {
+          ;
+        }
+        else
+        {
+          setOutput(i, k);
+        }
+      }
+      HAL_Delay(500);
+      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
+    }
   }
 }
 
@@ -885,7 +928,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
 
     //Error handling
-    if (HALreturn != HAL_OK || exp_data == 255 || exp_interrupt == 255)
+    if (/*HALreturn != HAL_OK || */ exp_data == 255 || exp_interrupt == 255)
     {
       Error_Handler();
     }
